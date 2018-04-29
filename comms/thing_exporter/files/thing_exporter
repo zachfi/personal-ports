@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# PROVIDE: thing_exporter
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# thing_exporter_enable (bool):          Set to NO by default.
+#               Set it to YES to enable thing_exporter.
+# thing_exporter_user (string):          Set user that thing_exporter will run under
+#               Default is "nobody".
+# thing_exporter_group (string):         Set group that thing_exporter will run under
+#               Default is "nobody".
+# thing_exporter_args (string):          Set extra arguments to pass to thing_exporter
+#               Default is "".
+# thing_exporter_listen_address (string):Set ip:port that thing_exporter will listen on
+#               Default is ":9100".
+# thing_exporter_textfile_dir (string):  Set directory that thing_exporter will watch
+#               Default is "/var/tmp/thing_exporter".
+
+. /etc/rc.subr
+
+name=thing_exporter
+rcvar=thing_exporter_enable
+
+load_rc_config $name
+
+: ${thing_exporter_enable:="NO"}
+: ${thing_exporter_user:="nobody"}
+: ${thing_exporter_group:="nobody"}
+: ${thing_exporter_args:=""}
+: ${thing_exporter_listen_address:=":9100"}
+: ${thing_exporter_textfile_dir:="/var/tmp/thing_exporter"}
+
+
+pidfile=/var/run/thing_exporter.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/thing_exporter"
+command_args="-p ${pidfile} /usr/bin/env ${procname} \
+    --web.listen-address=${thing_exporter_listen_address} \
+    ${thing_exporter_args}"
+
+start_precmd=thing_exporter_startprecmd
+
+thing_exporter_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${thing_exporter_user} -g ${thing_exporter_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${thing_exporter_textfile_dir} ]; then
+        install -d -o ${thing_exporter_user} -g ${thing_exporter_group} -m 1755 ${thing_exporter_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
