@@ -22,6 +22,10 @@ PLIST_FILES=	bin/wunderground_exporter
 
 USE_RC_SUBR=	wunderground_exporter
 
+do-build:
+	(cd ${GO_WRKSRC}; ${SETENV} ${MAKE_ENV} ${GO_ENV} ${GO_CMD} get -v)
+	(cd ${GO_WRKSRC}; ${SETENV} ${MAKE_ENV} ${GO_ENV} ${GO_CMD} install -v ${GO_TARGET})
+
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/wunderground_exporter ${STAGEDIR}${PREFIX}/bin
 
