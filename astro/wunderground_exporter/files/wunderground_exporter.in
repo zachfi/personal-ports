@@ -40,7 +40,6 @@ command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/wunderground_exporter"
 command_args="-p ${pidfile} /usr/bin/env ${procname} \
     --web.listen-address=${wunderground_exporter_listen_address} \
-    --collector.textfile.directory=${wunderground_exporter_textfile_dir} \
     ${wunderground_exporter_args}"
 
 start_precmd=wunderground_exporter_startprecmd
