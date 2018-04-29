@@ -10,6 +10,8 @@ COMMENT=	Prometheus Exporter for Weather Underground forecast
 
 LICENSE=	APACHE20
 
+BUILD_DEPENDS=	git:devel/git
+
 USES=		go
 USE_GITHUB=	yes
 
