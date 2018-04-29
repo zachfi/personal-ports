@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# PROVIDE: wunderground_exporter
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# wunderground_exporter_enable (bool):          Set to NO by default.
+#               Set it to YES to enable wunderground_exporter.
+# wunderground_exporter_user (string):          Set user that wunderground_exporter will run under
+#               Default is "nobody".
+# wunderground_exporter_group (string):         Set group that wunderground_exporter will run under
+#               Default is "nobody".
+# wunderground_exporter_args (string):          Set extra arguments to pass to wunderground_exporter
+#               Default is "".
+# wunderground_exporter_listen_address (string):Set ip:port that wunderground_exporter will listen on
+#               Default is ":9100".
+# wunderground_exporter_textfile_dir (string):  Set directory that wunderground_exporter will watch
+#               Default is "/var/tmp/wunderground_exporter".
+
+. /etc/rc.subr
+
+name=wunderground_exporter
+rcvar=wunderground_exporter_enable
+
+load_rc_config $name
+
+: ${wunderground_exporter_enable:="NO"}
+: ${wunderground_exporter_user:="nobody"}
+: ${wunderground_exporter_group:="nobody"}
+: ${wunderground_exporter_args:=""}
+: ${wunderground_exporter_listen_address:=":9100"}
+: ${wunderground_exporter_textfile_dir:="/var/tmp/wunderground_exporter"}
+
+
+pidfile=/var/run/wunderground_exporter.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/wunderground_exporter"
+command_args="-p ${pidfile} /usr/bin/env ${procname} \
+    --web.listen-address=${wunderground_exporter_listen_address} \
+    --collector.textfile.directory=${wunderground_exporter_textfile_dir} \
+    ${wunderground_exporter_args}"
+
+start_precmd=wunderground_exporter_startprecmd
+
+wunderground_exporter_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${wunderground_exporter_user} -g ${wunderground_exporter_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${wunderground_exporter_textfile_dir} ]; then
+        install -d -o ${wunderground_exporter_user} -g ${wunderground_exporter_group} -m 1755 ${wunderground_exporter_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
