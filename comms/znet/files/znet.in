@@ -30,7 +30,7 @@ load_rc_config $name
 : ${znet_enable:="NO"}
 : ${znet_user:="nobody"}
 : ${znet_group:="nobody"}
-: ${znet_args:="--config /usr/local/etc/znet.toml"}
+: ${znet_args:="listen --config /usr/local/etc/znet.yaml"}
 : ${znet_textfile_dir:="/var/tmp/znet"}
 
 
