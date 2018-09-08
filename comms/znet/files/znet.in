@@ -30,16 +30,14 @@ load_rc_config $name
 : ${znet_enable:="NO"}
 : ${znet_user:="nobody"}
 : ${znet_group:="nobody"}
-: ${znet_args:=""}
+: ${znet_args:="--config /usr/local/etc/znet.toml"}
 : ${znet_textfile_dir:="/var/tmp/znet"}
 
 
 pidfile=/var/run/znet.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/znet"
-command_args="-p ${pidfile} /usr/bin/env ${procname} \
-    --web.listen-address=${znet_listen_address} \
-    ${znet_args}"
+command_args="-p ${pidfile} /usr/bin/env ${procname} ${znet_args}"
 
 start_precmd=znet_startprecmd
 
