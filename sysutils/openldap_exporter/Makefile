@@ -16,12 +16,13 @@ BUILD_DEPENDS=	git:devel/git
 USES=		go
 USE_GITHUB=	yes
 
-GH_ACCOUNT=	tomcz
+GH_ACCOUNT=	xaque208
+GH_TAGNAME=	a11bffb
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
 
-PLIST_FILES=	bin/openldap_exporter
+PLIST_FILES=	build/openldap_exporter-freebsd
 
 USE_RC_SUBR=	openldap_exporter
 
