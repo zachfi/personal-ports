@@ -31,7 +31,6 @@ load_rc_config $name
 : ${wunderground_exporter_user:="nobody"}
 : ${wunderground_exporter_group:="nobody"}
 : ${wunderground_exporter_args:=""}
-: ${wunderground_exporter_listen_address:=":9100"}
 : ${wunderground_exporter_textfile_dir:="/var/tmp/wunderground_exporter"}
 
 
@@ -39,7 +38,6 @@ pidfile=/var/run/wunderground_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/wunderground_exporter"
 command_args="-p ${pidfile} /usr/bin/env ${procname} \
-    --web.listen-address=${wunderground_exporter_listen_address} \
     ${wunderground_exporter_args}"
 
 start_precmd=wunderground_exporter_startprecmd
