@@ -1,0 +1,3 @@
+openldap_exporter is a Prometheus exporter for OpenLDAP.
+
+WWW: https://github.com/xaque208/openldap_exporter
