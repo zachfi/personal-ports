@@ -1,9 +1,8 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	openldap_exporter
-PORTVERSION=	1.0
-PORTREVISION=	1
-DISTVERSIONPREFIX=v
+DISTVERSION=	20190218
+
 CATEGORIES=	sysutils
 
 MAINTAINER=	zach@zleslie.info
