@@ -1,8 +1,8 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	openldap_exporter
-DISTVERSION=	20190218
-
+PORTVERSION=	1.1.0
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	zach@zleslie.info
@@ -15,8 +15,7 @@ BUILD_DEPENDS=	git:devel/git
 USES=		go
 USE_GITHUB=	yes
 
-GH_ACCOUNT=	xaque208
-GH_TAGNAME=	a11bffb
+GH_ACCOUNT=	xaque20
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
