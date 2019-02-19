@@ -1,0 +1,4 @@
+astro/wunderground_exporter/
+comms/thing_exporter/
+comms/znet/
+sysutils/openldap_exporter/
