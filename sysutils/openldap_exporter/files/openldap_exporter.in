@@ -31,7 +31,6 @@ load_rc_config $name
 : ${openldap_exporter_user:="nobody"}
 : ${openldap_exporter_group:="nobody"}
 : ${openldap_exporter_args:=""}
-: ${openldap_exporter_listen_address:=":9100"}
 : ${openldap_exporter_textfile_dir:="/var/tmp/openldap_exporter"}
 
 
@@ -39,7 +38,6 @@ pidfile=/var/run/openldap_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/openldap_exporter"
 command_args="-p ${pidfile} /usr/bin/env ${procname} \
-    --web.listen-address=${openldap_exporter_listen_address} \
     ${openldap_exporter_args}"
 
 start_precmd=openldap_exporter_startprecmd
