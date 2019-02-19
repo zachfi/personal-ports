@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	wunderground_exporter
-PORTVERSION=	0.1.3
+PORTVERSION=	0.1.4
 PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	astro
