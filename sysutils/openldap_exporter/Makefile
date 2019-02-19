@@ -21,7 +21,7 @@ GH_ACCOUNT=	xaque208
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
 
-PLIST_FILES=	build/openldap_exporter-freebsd
+PLIST_FILES=	bin/openldap_exporter
 
 USE_RC_SUBR=	openldap_exporter
 
