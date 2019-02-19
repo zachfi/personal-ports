@@ -3,6 +3,7 @@
 PORTNAME=	openldap_exporter
 PORTVERSION=	1.1.0
 PORTREVISION=	1
+DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
 MAINTAINER=	zach@zleslie.info
