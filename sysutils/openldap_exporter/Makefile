@@ -15,7 +15,7 @@ BUILD_DEPENDS=	git:devel/git
 USES=		go
 USE_GITHUB=	yes
 
-GH_ACCOUNT=	xaque20
+GH_ACCOUNT=	xaque208
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
