@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# PROVIDE: weigh_exporter
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# weigh_exporter_enable (bool):          Set to NO by default.
+#               Set it to YES to enable weigh_exporter.
+
+. /etc/rc.subr
+
+name=weigh_exporter
+rcvar=weigh_exporter_enable
+
+load_rc_config $name
+
+: ${weigh_exporter_enable:="NO"}
+: ${weigh_exporter_user:="nobody"}
+: ${weigh_exporter_group:="nobody"}
+: ${weigh_exporter_args:="-L :9100"}
+
+
+pidfile=/var/run/weigh_exporter.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/weigh"
+command_args="-p ${pidfile} /usr/bin/env ${procname} ${weigh_exporter_args}"
+
+start_precmd=weigh_exporter_startprecmd
+
+weigh_exporter_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${weigh_exporter_user} -g ${weigh_exporter_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${weigh_exporter_textfile_dir} ]; then
+        install -d -o ${weigh_exporter_user} -g ${weigh_exporter_group} -m 1755 ${weigh_exporter_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
