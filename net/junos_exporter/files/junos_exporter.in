@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# PROVIDE: junos_exporter
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# junos_exporter_enable (bool):          Set to NO by default.
+#               Set it to YES to enable junos_exporter.
+# junos_exporter_user (string):          Set user that junos_exporter will run under
+#               Default is "nobody".
+# junos_exporter_group (string):         Set group that junos_exporter will run under
+#               Default is "nobody".
+# junos_exporter_args (string):          Set extra arguments to pass to junos_exporter
+#               Default is "".
+# junos_exporter_listen_address (string):Set ip:port that junos_exporter will listen on
+#               Default is ":9100".
+
+. /etc/rc.subr
+
+name=junos_exporter
+rcvar=junos_exporter_enable
+
+load_rc_config $name
+
+: ${junos_exporter_enable:="NO"}
+: ${junos_exporter_user:="nobody"}
+: ${junos_exporter_group:="nobody"}
+: ${junos_exporter_args:=""}
+: ${junos_exporter_textfile_dir:="/var/tmp/junos_exporter"}
+
+
+pidfile=/var/run/junos_exporter.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/junos_exporter"
+command_args="-p ${pidfile} /usr/bin/env ${procname} \
+    ${junos_exporter_args}"
+
+start_precmd=junos_exporter_startprecmd
+
+junos_exporter_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${junos_exporter_user} -g ${junos_exporter_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${junos_exporter_textfile_dir} ]; then
+        install -d -o ${junos_exporter_user} -g ${junos_exporter_group} -m 1755 ${junos_exporter_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
