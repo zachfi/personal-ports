@@ -1,6 +1,6 @@
 astro/wunderground_exporter/
 comms/thing_exporter/
 comms/znet/
-net/junos_exporter/
+net/arp_exporter/
 sysutils/openldap_exporter/
 sysutils/weigh/
