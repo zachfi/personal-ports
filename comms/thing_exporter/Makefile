@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	thing_exporter
-PORTVERSION=	0.0.3
+PORTVERSION=	0.0.4
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
 
