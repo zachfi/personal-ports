@@ -37,7 +37,7 @@ load_rc_config $name
 pidfile=/var/run/znet.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/znet"
-command_args="-p ${pidfile} /usr/bin/env ${procname} ${znet_args}"
+command_args="-f -p ${pidfile} /usr/bin/env ${procname} ${znet_args}"
 
 start_precmd=znet_startprecmd
 

@@ -37,7 +37,7 @@ load_rc_config $name
 pidfile=/var/run/wunderground_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/wunderground_exporter"
-command_args="-p ${pidfile} /usr/bin/env ${procname} \
+command_args="-f -p ${pidfile} /usr/bin/env ${procname} \
     ${wunderground_exporter_args}"
 
 start_precmd=wunderground_exporter_startprecmd

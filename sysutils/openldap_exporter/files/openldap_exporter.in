@@ -37,7 +37,7 @@ load_rc_config $name
 pidfile=/var/run/openldap_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/openldap_exporter"
-command_args="-p ${pidfile} /usr/bin/env ${procname} \
+command_args="-f -p ${pidfile} /usr/bin/env ${procname} \
     ${openldap_exporter_args}"
 
 start_precmd=openldap_exporter_startprecmd

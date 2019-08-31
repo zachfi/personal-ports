@@ -4,6 +4,7 @@ PORTNAME=	thing_exporter
 PORTVERSION=	0.0.4
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
+PORTREVISION=	1
 
 MAINTAINER=	zach@zleslie.info
 COMMENT=	Prometheus Exporter for Weather Underground forecast

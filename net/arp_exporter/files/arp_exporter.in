@@ -35,7 +35,7 @@ load_rc_config $name
 pidfile=/var/run/arp_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/arp_exporter"
-command_args="-p ${pidfile} /usr/bin/env ${procname} \
+command_args="-f -p ${pidfile} /usr/bin/env ${procname} \
     ${arp_exporter_args}"
 
 start_precmd=arp_exporter_startprecmd

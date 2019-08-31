@@ -4,6 +4,7 @@ PORTNAME=	arp_exporter
 PORTVERSION=	2.0.1
 DISTVERSIONPREFIX=v
 CATEGORIES=	net
+PORTREVISION=	1
 
 MAINTAINER=	zach@zleslie.info
 COMMENT=	Prometheus Exporter for ARP Tables

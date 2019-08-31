@@ -4,6 +4,7 @@ PORTNAME=	znet
 PORTVERSION=	0.2.0
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
+PORTREVISION=	1
 
 MAINTAINER=	zach@zleslie.info
 COMMENT=	Znet things listener
