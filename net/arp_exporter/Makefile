@@ -1,10 +1,9 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	arp_exporter
-PORTVERSION=	2.0.1
+PORTVERSION=	2.1.0
 DISTVERSIONPREFIX=v
 CATEGORIES=	net
-PORTREVISION=	1
 
 MAINTAINER=	zach@zleslie.info
 COMMENT=	Prometheus Exporter for ARP Tables
