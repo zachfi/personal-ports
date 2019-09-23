@@ -1,4 +1,5 @@
 astro/wunderground_exporter/
+astro/openweathermap_exporter/
 comms/thing_exporter/
 comms/znet/
 net/arp_exporter/
