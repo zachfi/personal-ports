@@ -1,9 +1,8 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	openweathermap_exporter
-PORTVERSION=	0.0.3
+PORTVERSION=	0.0.4
 DISTVERSIONPREFIX=v
-PORTREVISION=	1
 CATEGORIES=	astro
 
 MAINTAINER=	zach@zleslie.info
