@@ -22,7 +22,7 @@
 
 . /etc/rc.subr
 
-name=nats_exporter
+name=prometheus-nats-exporter
 rcvar=nats_exporter_enable
 
 load_rc_config $name
