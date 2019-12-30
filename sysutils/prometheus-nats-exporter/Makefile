@@ -21,7 +21,7 @@ GH_ACCOUNT=	nats-io
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/prometheus-nats-exporter
 GO_TARGET=	github.com/${GH_ACCOUNT}/prometheus-nats-exporter
 
-PLIST_FILES=	bin/nats_exporter
+PLIST_FILES=	bin/prometheus-nats-exporter
 
 USE_RC_SUBR=	nats_exporter
 
