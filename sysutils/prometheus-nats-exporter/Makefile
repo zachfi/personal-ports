@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
-PORTNAME=	nats_exporter
-PORTVERSION=	0.1.0
+PORTNAME=	prometheus-nats-exporter
+PORTVERSION=	0.6.0
 PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
