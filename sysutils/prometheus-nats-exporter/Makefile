@@ -26,6 +26,6 @@ PLIST_FILES=	bin/prometheus-nats-exporter
 USE_RC_SUBR=	nats_exporter
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/nats_exporter ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/prometheus-nats-exporter ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>
