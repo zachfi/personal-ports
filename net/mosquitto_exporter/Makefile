@@ -25,6 +25,6 @@ PLIST_FILES=	bin/mosquitto_exporter
 USE_RC_SUBR=	mosquitto_exporter
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/mosquitto_exporter ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/mosquitto-exporter ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>
