@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# PROVIDE: mosquitto_exporter
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# mosquitto_exporter_enable (bool):          Set to NO by default.
+#               Set it to YES to enable mosquitto_exporter.
+# mosquitto_exporter_user (string):          Set user that mosquitto_exporter will run under
+#               Default is "nobody".
+# mosquitto_exporter_group (string):         Set group that mosquitto_exporter will run under
+#               Default is "nobody".
+# mosquitto_exporter_args (string):          Set extra arguments to pass to mosquitto_exporter
+#               Default is "".
+# mosquitto_exporter_listen_address (string):Set ip:port that mosquitto_exporter will listen on
+#               Default is ":9100".
+
+. /etc/rc.subr
+
+name=mosquitto_exporter
+rcvar=mosquitto_exporter_enable
+
+load_rc_config $name
+
+: ${mosquitto_exporter_enable:="NO"}
+: ${mosquitto_exporter_user:="nobody"}
+: ${mosquitto_exporter_group:="nobody"}
+: ${mosquitto_exporter_args:=""}
+: ${mosquitto_exporter_textfile_dir:="/var/tmp/mosquitto_exporter"}
+
+
+pidfile=/var/run/mosquitto_exporter.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/mosquitto_exporter"
+command_args="-f -p ${pidfile} /usr/bin/env ${procname} \
+    ${mosquitto_exporter_args}"
+
+start_precmd=mosquitto_exporter_startprecmd
+
+mosquitto_exporter_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${mosquitto_exporter_user} -g ${mosquitto_exporter_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${mosquitto_exporter_textfile_dir} ]; then
+        install -d -o ${mosquitto_exporter_user} -g ${mosquitto_exporter_group} -m 1755 ${mosquitto_exporter_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
