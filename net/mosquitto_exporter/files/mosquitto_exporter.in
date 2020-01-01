@@ -34,7 +34,7 @@ load_rc_config $name
 
 pidfile=/var/run/mosquitto_exporter.pid
 command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/mosquitto_exporter"
+procname="%%PREFIX%%/bin/mosquitto-exporter"
 command_args="-f -p ${pidfile} /usr/bin/env ${procname} \
     ${mosquitto_exporter_args}"
 
