@@ -20,11 +20,11 @@ GH_ACCOUNT=	sapcc
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
 
-PLIST_FILES=	bin/mosquitto_exporter
+PLIST_FILES=	bin/mosquitto-exporter
 
 USE_RC_SUBR=	mosquitto_exporter
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/mosquitto-exporter ${STAGEDIR}${PREFIX}/bin mosquitto_exporter
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/mosquitto-exporter ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>
