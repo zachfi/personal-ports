@@ -4,7 +4,7 @@ PORTNAME=	thing_exporter
 PORTVERSION=	0.5.0
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
-PORTREVISION=	2
+PORTREVISION=	3
 
 MAINTAINER=	zach@zleslie.info
 COMMENT=	Prometheus Exporter for some things
