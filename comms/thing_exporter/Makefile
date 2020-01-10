@@ -4,10 +4,10 @@ PORTNAME=	thing_exporter
 PORTVERSION=	0.5.0
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
-PORTREVISION=	1
+PORTREVISION=	2
 
 MAINTAINER=	zach@zleslie.info
-COMMENT=	Prometheus Exporter for Weather Underground forecast
+COMMENT=	Prometheus Exporter for some things
 
 LICENSE=	APACHE20
 
