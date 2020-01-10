@@ -1,10 +1,10 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	thing_exporter
-PORTVERSION=	0.5.0
+PORTVERSION=	0.6.0
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
-PORTREVISION=	3
+PORTREVISION=	1
 
 MAINTAINER=	zach@zleslie.info
 COMMENT=	Prometheus Exporter for some things
