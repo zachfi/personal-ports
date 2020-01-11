@@ -37,7 +37,7 @@ load_rc_config $name
 pidfile=/var/run/nats_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/nats_exporter"
-command_args="-p ${pidfile} /usr/bin/env ${procname} \
+command_args="-S -T ${name} -p ${pidfile} /usr/bin/env ${procname} \
     ${nats_exporter_args}"
 
 start_precmd=nats_exporter_startprecmd

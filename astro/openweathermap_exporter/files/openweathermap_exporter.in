@@ -37,7 +37,7 @@ load_rc_config $name
 pidfile=/var/run/openweathermap_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/openweathermap_exporter"
-command_args="-f -p ${pidfile} /usr/bin/env ${procname} \
+command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} \
     ${openweathermap_exporter_args}"
 
 start_precmd=openweathermap_exporter_startprecmd

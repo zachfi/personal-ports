@@ -2,6 +2,7 @@
 
 PORTNAME=	openweathermap_exporter
 PORTVERSION=	0.0.6
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	astro
 
