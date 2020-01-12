@@ -1,8 +1,8 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
-PORTNAME=	prometheus-nats-exporter
+PORTNAME=	nats_exporter
 PORTVERSION=	0.6.0
-PORTREVISION=	4
+PORTREVISION=	0
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -26,6 +26,6 @@ PLIST_FILES=	bin/prometheus-nats-exporter
 USE_RC_SUBR=	nats_exporter
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/prometheus-nats-exporter ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/prometheus-nats-exporter ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>
