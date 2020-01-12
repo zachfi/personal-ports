@@ -6,5 +6,5 @@ net/arp_exporter/
 sysutils/openldap_exporter/
 sysutils/weigh/
 sysutils/newrelic-fluent-bit-output/
-sysutils/prometheus-nats-exporter/
+sysutils/nats_exporter/
 net/mosquitto_exporter/

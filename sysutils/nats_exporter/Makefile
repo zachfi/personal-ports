@@ -2,7 +2,7 @@
 
 PORTNAME=	nats_exporter
 PORTVERSION=	0.6.0
-PORTREVISION=	0
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -17,6 +17,7 @@ USES=		go
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	nats-io
+GH_PROJECT=	prometheus-nats-exporter
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/prometheus-nats-exporter
 GO_TARGET=	github.com/${GH_ACCOUNT}/prometheus-nats-exporter
