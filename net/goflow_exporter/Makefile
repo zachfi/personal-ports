@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	goflow_exporter
-PORTVERSION=	0.1.0
+PORTVERSION=	0.1.1
 PORTREVISION=	0
 DISTVERSIONPREFIX=v
 CATEGORIES=	net
