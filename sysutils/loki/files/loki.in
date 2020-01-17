@@ -1,0 +1,56 @@
+#!/bin/sh
+
+# PROVIDE: loki
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# loki_enable (bool):          Set to NO by default.
+#               Set it to YES to enable loki.
+# loki_user (string):          Set user that loki will run under
+#               Default is "nobody".
+# loki_group (string):         Set group that loki will run under
+#               Default is "nobody".
+# loki_args (string):          Set extra arguments to pass to loki
+#               Default is "".
+# loki_listen_address (string):Set ip:port that loki will listen on
+#               Default is ":9100".
+# loki_textfile_dir (string):  Set directory that loki will watch
+#               Default is "/var/tmp/loki".
+
+. /etc/rc.subr
+
+name=loki
+rcvar=loki_enable
+
+load_rc_config $name
+
+: ${loki_enable:="NO"}
+: ${loki_user:="nobody"}
+: ${loki_group:="nobody"}
+: ${loki_args:=""}
+: ${loki_textfile_dir:="/var/tmp/loki"}
+
+
+pidfile=/var/run/loki.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/loki"
+command_args="-S -T ${name} -p ${pidfile} /usr/bin/env ${procname} \
+    ${loki_args}"
+
+start_precmd=loki_startprecmd
+
+loki_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${loki_user} -g ${loki_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${loki_textfile_dir} ]; then
+        install -d -o ${loki_user} -g ${loki_group} -m 1755 ${loki_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
