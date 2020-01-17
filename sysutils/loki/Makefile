@@ -1,0 +1,32 @@
+# Created by: Zach Leslie <ports@zleslie.info>
+
+PORTNAME=	loki
+PORTVERSION=	1.2.0
+PORTREVISION=	1
+DISTVERSIONPREFIX=v
+CATEGORIES=	sysutils
+
+MAINTAINER=	zach@zleslie.info
+COMMENT=	Like Prometheus, but for logs
+
+LICENSE=	MIT
+
+BUILD_DEPENDS=	git:devel/git
+
+USES=		go
+USE_GITHUB=	yes
+
+GH_ACCOUNT=	grafana
+GH_PROJECT=	loki
+
+GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+
+PLIST_FILES=	bin/loki
+
+USE_RC_SUBR=	loki
+
+do-install:
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/${GH_PROJECT} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+
+.include <bsd.port.mk>
