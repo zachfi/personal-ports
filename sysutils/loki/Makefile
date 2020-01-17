@@ -26,8 +26,8 @@ GH_PROJECT=	loki
 
 # NO_BUILD=	yes
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/loki
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/loki
+GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
+GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
 
 # MASTER_SITES=  https://github.com/${GH_ACCOUNT}/${PORTNAME}/releases/download/${DISTVERSIONPREFIX}${PORTVERSION}/
 
