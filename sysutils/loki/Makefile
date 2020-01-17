@@ -36,6 +36,6 @@ PLIST_FILES=	bin/loki
 USE_RC_SUBR=	loki
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/${DISTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/loki ${STAGEDIR}${PREFIX}/bin/loki
 
 .include <bsd.port.mk>
