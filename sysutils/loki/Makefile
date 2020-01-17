@@ -13,14 +13,17 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go
+
+#USES=		go
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	grafana
 GH_PROJECT=	loki
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+#GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+#GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+
+MASTER_SITES=  https://github.com/${GH_ACCOUNT}/${PORTNAME}/releases/download/${PORTVERSION}/
 
 PLIST_FILES=	bin/loki
 
