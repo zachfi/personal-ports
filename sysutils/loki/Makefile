@@ -15,7 +15,10 @@ BUILD_DEPENDS=	git:devel/git
 
 
 #USES=		go
-USE_GITHUB=	yes
+USE_GITHUB=	nodefault
+
+DISTNAME=	loki-canary-freebsd-amd64
+EXTRACT_SUFX=	.zip
 
 GH_ACCOUNT=	grafana
 GH_PROJECT=	loki
@@ -23,7 +26,7 @@ GH_PROJECT=	loki
 #GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 #GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 
-MASTER_SITES=  https://github.com/${GH_ACCOUNT}/${PORTNAME}/releases/download/${PORTVERSION}/
+MASTER_SITES=  https://github.com/${GH_ACCOUNT}/${PORTNAME}/releases/download/${DISTVERSIONPREFIX}${PORTVERSION}/
 
 PLIST_FILES=	bin/loki
 
