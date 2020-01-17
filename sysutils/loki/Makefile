@@ -17,6 +17,8 @@ BUILD_DEPENDS=	git:devel/git
 #USES=		go
 USE_GITHUB=	nodefault
 
+NOBUILD=	yes
+
 DISTNAME=	loki-canary-freebsd-amd64
 EXTRACT_SUFX=	.zip
 
