@@ -15,6 +15,7 @@ BUILD_DEPENDS=	git:devel/git
 
 
 USES=		go:modules
+USE_GITHUB=	yes
 # USE_GITHUB=	nodefault
 
 # DISTNAME=	loki-canary-freebsd-amd64
