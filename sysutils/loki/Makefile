@@ -26,8 +26,7 @@ GH_PROJECT=	loki
 
 # NO_BUILD=	yes
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/loki
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/loki
+GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/loki github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/promtail github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/logscli
 
 # MASTER_SITES=  https://github.com/${GH_ACCOUNT}/${PORTNAME}/releases/download/${DISTVERSIONPREFIX}${PORTVERSION}/
 
@@ -37,5 +36,7 @@ USE_RC_SUBR=	loki
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/loki ${STAGEDIR}${PREFIX}/bin/loki
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/promtail ${STAGEDIR}${PREFIX}/bin/promtail
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/logcli ${STAGEDIR}${PREFIX}/bin/logcli
 
 .include <bsd.port.mk>
