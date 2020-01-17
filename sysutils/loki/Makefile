@@ -30,7 +30,7 @@ GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/loki github.com/${GH_ACCOU
 
 # MASTER_SITES=  https://github.com/${GH_ACCOUNT}/${PORTNAME}/releases/download/${DISTVERSIONPREFIX}${PORTVERSION}/
 
-PLIST_FILES=	bin/loki
+PLIST_FILES=	bin/loki bin/promtail bin/logcli
 
 USE_RC_SUBR=	loki
 
