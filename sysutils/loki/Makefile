@@ -17,13 +17,13 @@ BUILD_DEPENDS=	git:devel/git
 #USES=		go
 USE_GITHUB=	nodefault
 
-NOBUILD=	yes
-
 DISTNAME=	loki-canary-freebsd-amd64
 EXTRACT_SUFX=	.zip
 
 GH_ACCOUNT=	grafana
 GH_PROJECT=	loki
+
+NO_BUILD=	yes
 
 #GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 #GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
@@ -35,6 +35,6 @@ PLIST_FILES=	bin/loki
 USE_RC_SUBR=	loki
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/${GH_PROJECT} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${INSTALL_PROGRAM} ${WRKDIR}/${DISTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>
