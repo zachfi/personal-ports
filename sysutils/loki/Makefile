@@ -1,5 +1,3 @@
-# Created by: Zach Leslie <ports@zleslie.info>
-
 PORTNAME=	loki
 PORTVERSION=	1.2.0
 PORTREVISION=	4
@@ -13,22 +11,13 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-
 USES=		go:modules
 USE_GITHUB=	yes
-# USE_GITHUB=	nodefault
-
-# DISTNAME=	loki-canary-freebsd-amd64
-# EXTRACT_SUFX=	.zip
 
 GH_ACCOUNT=	grafana
 GH_PROJECT=	loki
 
-# NO_BUILD=	yes
-
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/loki github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/promtail github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/logcli
-
-# MASTER_SITES=  https://github.com/${GH_ACCOUNT}/${PORTNAME}/releases/download/${DISTVERSIONPREFIX}${PORTVERSION}/
 
 USE_RC_SUBR=	loki promtail
 
