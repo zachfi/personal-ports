@@ -9,3 +9,4 @@ sysutils/nats_exporter/
 sysutils/newrelic-fluent-bit-output/
 sysutils/openldap_exporter/
 sysutils/weigh/
+sysutils/loki/
