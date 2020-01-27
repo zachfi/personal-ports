@@ -1,4 +1,5 @@
 bin/loki
 bin/promtail
 bin/logcli
-@sample %%ETCDIR%%.yaml.sample
+@sample etc/loki.yaml.sample
+@sample etc/promtail.yaml.sample
