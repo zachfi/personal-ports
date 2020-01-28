@@ -1,6 +1,6 @@
 PORTNAME=	loki
 PORTVERSION=	1.2.0
-PORTREVISION=	4
+PORTREVISION=	5
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -27,5 +27,8 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/logcli ${STAGEDIR}${PREFIX}/bin/logcli
 	${INSTALL_DATA} ${WRKSRC}/cmd/loki/loki-local-config.yaml ${STAGEDIR}${PREFIX}/etc/loki.yaml.sample
 	${INSTALL_DATA} ${WRKSRC}/cmd/promtail/promtail-local-config.yaml ${STAGEDIR}${PREFIX}/etc/promtail.yaml.sample
+
+post-install:
+	${MKDIR} ${STAGEDIR}/var/loki
 
 .include <bsd.port.mk>

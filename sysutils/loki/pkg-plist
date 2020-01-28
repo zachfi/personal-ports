@@ -3,3 +3,4 @@ bin/promtail
 bin/logcli
 @sample etc/loki.yaml.sample
 @sample etc/promtail.yaml.sample
+@dir(root,wheel,0770) /var/loki
