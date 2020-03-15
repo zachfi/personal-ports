@@ -2,7 +2,7 @@
 
 PORTNAME=	arp_exporter
 PORTVERSION=	2.2.4
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	net
 
@@ -20,6 +20,7 @@ GH_ACCOUNT=	xaque208
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
+GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/arp_exporter
 
