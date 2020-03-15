@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	arp_exporter
-PORTVERSION=	2.2.2
+PORTVERSION=	2.2.4
 PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	net
