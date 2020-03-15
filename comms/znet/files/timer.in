@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# PROVIDE: timer
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# timer_enable (bool):          Set to NO by default.
+#               Set it to YES to enable timer.
+# timer_user (string):          Set user that timer will run under
+#               Default is "nobody".
+# timer_group (string):         Set group that timer will run under
+#               Default is "nobody".
+# timer_args (string):          Set extra arguments to pass to timer
+#               Default is "".
+# timer_listen_address (string):Set ip:port that timer will listen on
+#               Default is ":9100".
+# timer_textfile_dir (string):  Set directory that timer will watch
+#               Default is "/var/tmp/timer".
+
+. /etc/rc.subr
+
+name=timer
+rcvar=timer_enable
+
+load_rc_config $name
+
+: ${timer_enable:="NO"}
+: ${timer_user:="nobody"}
+: ${timer_group:="nobody"}
+: ${timer_args:="timer --config /usr/local/etc/znet.yaml"}
+: ${timer_textfile_dir:="/var/tmp/timer"}
+
+
+pidfile=/var/run/timer.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/znet"
+command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${timer_args}"
+
+start_precmd=timer_startprecmd
+
+timer_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${timer_user} -g ${timer_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${timer_textfile_dir} ]; then
+        install -d -o ${timer_user} -g ${timer_group} -m 1755 ${timer_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
