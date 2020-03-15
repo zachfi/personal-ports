@@ -30,7 +30,7 @@ load_rc_config $name
 : ${timer_enable:="NO"}
 : ${timer_user:="nobody"}
 : ${timer_group:="nobody"}
-: ${timer_args:="timer --config /usr/local/etc/znet.yaml"}
+: ${timer_args:="timer --config /usr/local/etc/timer.yaml"}
 : ${timer_textfile_dir:="/var/tmp/timer"}
 
 
