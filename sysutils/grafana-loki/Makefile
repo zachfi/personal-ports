@@ -1,6 +1,6 @@
 PORTNAME=	grafana-loki
 PORTVERSION=	1.3.0
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -30,5 +30,6 @@ do-install:
 
 post-install:
 	${MKDIR} ${STAGEDIR}/var/loki
+	chown nobody:nobody ${STAGEDIR}/var/loki
 
 .include <bsd.port.mk>
