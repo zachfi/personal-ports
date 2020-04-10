@@ -2,7 +2,7 @@
 
 PORTNAME=	znet
 PORTVERSION=	0.9.5
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
 
@@ -24,7 +24,7 @@ GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/znet
 
-USE_RC_SUBR=	znet timer
+USE_RC_SUBR=	znet timer gitwatch
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/znet ${STAGEDIR}${PREFIX}/bin
