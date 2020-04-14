@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# PROVIDE: agent
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# agent_enable (bool):          Set to NO by default.
+#               Set it to YES to enable agent.
+# agent_user (string):          Set user that agent will run under
+#               Default is "nobody".
+# agent_group (string):         Set group that agent will run under
+#               Default is "nobody".
+# agent_args (string):          Set extra arguments to pass to agent
+#               Default is "".
+# agent_listen_address (string):Set ip:port that agent will listen on
+#               Default is ":9100".
+# agent_textfile_dir (string):  Set directory that agent will watch
+#               Default is "/var/tmp/agent".
+
+. /etc/rc.subr
+
+name=agent
+rcvar=agent_enable
+
+load_rc_config $name
+
+: ${agent_enable:="NO"}
+: ${agent_user:="nobody"}
+: ${agent_group:="nobody"}
+: ${agent_args:="agent --config /usr/local/etc/agent.yaml"}
+: ${agent_textfile_dir:="/var/tmp/agent"}
+
+
+pidfile=/var/run/agent.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/znet"
+command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${agent_args}"
+
+start_precmd=agent_startprecmd
+
+agent_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${agent_user} -g ${agent_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${agent_textfile_dir} ]; then
+        install -d -o ${agent_user} -g ${agent_group} -m 1755 ${agent_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"

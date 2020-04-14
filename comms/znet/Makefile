@@ -1,13 +1,13 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	znet
-PORTVERSION=	0.9.9
-PORTREVISION=	2
+PORTVERSION=	0.10.0
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
 
 MAINTAINER=	zach@zleslie.info
-COMMENT=	Znet things listener
+COMMENT=	znet rpc components
 
 LICENSE=	APACHE20
 
@@ -24,7 +24,7 @@ GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/znet
 
-USE_RC_SUBR=	znet timer gitwatch
+USE_RC_SUBR=	znet timer gitwatch agent
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/znet ${STAGEDIR}${PREFIX}/bin
