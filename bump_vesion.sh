@@ -21,7 +21,7 @@ pushd $PORT
     make makesum
     git add distinfo
     git add Makefile
-    git ci -m "chore: update ${PORT} for ${VERSION}"
+    git commit -m "chore: update ${PORT} for ${VERSION}"
     git push
 popd
 
