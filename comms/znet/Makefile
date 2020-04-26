@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	znet
-PORTVERSION=	0.13.12
+PORTVERSION=	0.13.13
 PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
