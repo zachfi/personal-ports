@@ -24,7 +24,7 @@ GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/znet
 
-USE_RC_SUBR=	znet timer gitwatch agent
+USE_RC_SUBR=	znet timer gitwatch agent thingharvest builder
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/znet ${STAGEDIR}${PREFIX}/bin

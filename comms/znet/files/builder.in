@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# PROVIDE: builder
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# builder_enable (bool):          Set to NO by default.
+#               Set it to YES to enable builder.
+# builder_user (string):          Set user that builder will run under
+#               Default is "nobody".
+# builder_group (string):         Set group that builder will run under
+#               Default is "nobody".
+# builder_args (string):          Set extra arguments to pass to builder
+#               Default is "".
+# builder_listen_address (string):Set ip:port that builder will listen on
+#               Default is ":9100".
+# builder_textfile_dir (string):  Set directory that builder will watch
+#               Default is "/var/tmp/builder".
+
+. /etc/rc.subr
+
+name=builder
+rcvar=builder_enable
+
+load_rc_config $name
+
+: ${builder_enable:="NO"}
+: ${builder_user:="nobody"}
+: ${builder_group:="nobody"}
+: ${builder_args:="builder --config /usr/local/etc/builder.yaml"}
+: ${builder_textfile_dir:="/var/tmp/builder"}
+
+
+pidfile=/var/run/builder.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/znet"
+command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${builder_args}"
+
+start_precmd=builder_startprecmd
+
+builder_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${builder_user} -g ${builder_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${builder_textfile_dir} ]; then
+        install -d -o ${builder_user} -g ${builder_group} -m 1755 ${builder_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
