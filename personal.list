@@ -1,11 +1,9 @@
 astro/openweathermap_exporter/
 astro/wunderground_exporter/
-comms/thing_exporter/
 comms/znet/
 net/arp_exporter/
 net/goflow_exporter/
 net/mosquitto_exporter/
-sysutils/nats_exporter/
 sysutils/newrelic-fluent-bit-output/
 sysutils/openldap_exporter/
 sysutils/weigh/
