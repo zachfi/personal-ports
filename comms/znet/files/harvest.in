@@ -1,53 +1,53 @@
 #!/bin/sh
 
-# PROVIDE: thingharvest
+# PROVIDE: harvest
 # REQUIRE: LOGIN
 # KEYWORD: shutdown
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# thingharvest_enable (bool):          Set to NO by default.
-#               Set it to YES to enable thingharvest.
-# thingharvest_user (string):          Set user that thingharvest will run under
+# harvest_enable (bool):          Set to NO by default.
+#               Set it to YES to enable harvest.
+# harvest_user (string):          Set user that harvest will run under
 #               Default is "nobody".
-# thingharvest_group (string):         Set group that thingharvest will run under
+# harvest_group (string):         Set group that harvest will run under
 #               Default is "nobody".
-# thingharvest_args (string):          Set extra arguments to pass to thingharvest
+# harvest_args (string):          Set extra arguments to pass to harvest
 #               Default is "".
-# thingharvest_listen_address (string):Set ip:port that thingharvest will listen on
+# harvest_listen_address (string):Set ip:port that harvest will listen on
 #               Default is ":9100".
-# thingharvest_textfile_dir (string):  Set directory that thingharvest will watch
-#               Default is "/var/tmp/thingharvest".
+# harvest_textfile_dir (string):  Set directory that harvest will watch
+#               Default is "/var/tmp/harvest".
 
 . /etc/rc.subr
 
-name=thingharvest
-rcvar=thingharvest_enable
+name=harvest
+rcvar=harvest_enable
 
 load_rc_config $name
 
-: ${thingharvest_enable:="NO"}
-: ${thingharvest_user:="nobody"}
-: ${thingharvest_group:="nobody"}
-: ${thingharvest_args:="thingharvest --config /usr/local/etc/thingharvest.yaml"}
-: ${thingharvest_textfile_dir:="/var/tmp/thingharvest"}
+: ${harvest_enable:="NO"}
+: ${harvest_user:="nobody"}
+: ${harvest_group:="nobody"}
+: ${harvest_args:="harvest --config /usr/local/etc/harvest.yaml"}
+: ${harvest_textfile_dir:="/var/tmp/harvest"}
 
 
-pidfile=/var/run/thingharvest.pid
+pidfile=/var/run/harvest.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/znet"
-command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${thingharvest_args}"
+command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${harvest_args}"
 
-start_precmd=thingharvest_startprecmd
+start_precmd=harvest_startprecmd
 
-thingharvest_startprecmd()
+harvest_startprecmd()
 {
     if [ ! -e ${pidfile} ]; then
-        install -o ${thingharvest_user} -g ${thingharvest_group} /dev/null ${pidfile};
+        install -o ${harvest_user} -g ${harvest_group} /dev/null ${pidfile};
     fi
-    if [ ! -d ${thingharvest_textfile_dir} ]; then
-        install -d -o ${thingharvest_user} -g ${thingharvest_group} -m 1755 ${thingharvest_textfile_dir}
+    if [ ! -d ${harvest_textfile_dir} ]; then
+        install -d -o ${harvest_user} -g ${harvest_group} -m 1755 ${harvest_textfile_dir}
     fi
 }
 
