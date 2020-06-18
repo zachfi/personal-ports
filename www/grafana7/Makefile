@@ -49,7 +49,6 @@ GH_TUPLE=	\
 		facebookgo:structtag:217e25fb9691:facebookgo_structtag/vendor/github.com/facebookgo/structtag \
 		facebookgo:subset:8dac2c3c4870:facebookgo_subset/vendor/github.com/facebookgo/subset \
 		fatih:color:v1.7.0:fatih_color/vendor/github.com/fatih/color \
-		go-asn1-ber:asn1-ber:f715ec2f112d:go_asn1_ber_asn1_ber/vendor/gopkg.in/asn1-ber.v1 \
 		go-ini:ini:v1.46.0:go_ini_ini/vendor/gopkg.in/ini.v1 \
 		go-ldap:ldap:v3.0.2:go_ldap_ldap/vendor/gopkg.in/ldap.v3 \
 		go-macaron:binding:0b4f37bab25b:go_macaron_binding/vendor/github.com/go-macaron/binding \
