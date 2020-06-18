@@ -8,3 +8,4 @@ sysutils/newrelic-fluent-bit-output/
 sysutils/openldap_exporter/
 sysutils/weigh/
 sysutils/grafana-loki
+www/grafana7
