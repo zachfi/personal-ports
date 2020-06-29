@@ -2,7 +2,7 @@
 
 PORTNAME=	znet
 PORTVERSION=	0.19.0
-PORTREVISION=	3
+PORTREVISION=	4
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
 
@@ -24,7 +24,7 @@ GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/znet
 
-USE_RC_SUBR=	znet timer gitwatch agent harvest builder
+USE_RC_SUBR=	znet timer gitwatch agent harvest builder arpwatch
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/znet ${STAGEDIR}${PREFIX}/bin
