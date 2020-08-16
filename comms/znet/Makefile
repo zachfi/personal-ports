@@ -21,7 +21,6 @@ GH_ACCOUNT=	xaque208
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
-GO_ENV+=	GODEBUG=x509ignoreCN=0
 
 PLIST_FILES=	bin/znet
 
