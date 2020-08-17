@@ -1,6 +1,6 @@
 #! /bin/bash
 
-sudo -i bash -c portshaker -v
+sudo -i -c portshaker -v
 
 tree=personal
 jail=larch12
