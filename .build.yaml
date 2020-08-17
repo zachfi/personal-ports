@@ -1,0 +1,5 @@
+---
+on_commit:
+  - './build.sh'
+
+branches: [ 'origin/master' ]
