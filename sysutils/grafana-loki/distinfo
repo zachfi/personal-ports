@@ -1,3 +1,3 @@
-TIMESTAMP = 1593403371
-SHA256 (grafana-loki-v1.5.0_GH0.tar.gz) = bd32bb96db1f8d90fa8c7f5473fbff4048364b8b8a0c9fdcd21155f6a062689d
-SIZE (grafana-loki-v1.5.0_GH0.tar.gz) = 19008582
+TIMESTAMP = 1601225843
+SHA256 (grafana-loki-v1.6.1_GH0.tar.gz) = 25d130f47aa4408ea9def4096253a37d4df4e0c44bdd59aa7e9a69f81e6fbd17
+SIZE (grafana-loki-v1.6.1_GH0.tar.gz) = 22793337
