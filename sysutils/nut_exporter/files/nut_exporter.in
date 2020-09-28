@@ -1,0 +1,56 @@
+#!/bin/sh
+
+# PROVIDE: nut_exporter
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# nut_exporter_enable (bool):          Set to NO by default.
+#               Set it to YES to enable nut_exporter.
+# nut_exporter_user (string):          Set user that nut_exporter will run under
+#               Default is "nobody".
+# nut_exporter_group (string):         Set group that nut_exporter will run under
+#               Default is "nobody".
+# nut_exporter_args (string):          Set extra arguments to pass to nut_exporter
+#               Default is "".
+# nut_exporter_listen_address (string):Set ip:port that nut_exporter will listen on
+#               Default is ":9100".
+# nut_exporter_textfile_dir (string):  Set directory that nut_exporter will watch
+#               Default is "/var/tmp/nut_exporter".
+
+. /etc/rc.subr
+
+name=nut_exporter
+rcvar=nut_exporter_enable
+
+load_rc_config $name
+
+: ${nut_exporter_enable:="NO"}
+: ${nut_exporter_user:="nobody"}
+: ${nut_exporter_group:="nobody"}
+: ${nut_exporter_args:=""}
+: ${nut_exporter_textfile_dir:="/var/tmp/nut_exporter"}
+
+
+pidfile=/var/run/nut_exporter.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/nut_exporter"
+command_args="-f -p ${pidfile} /usr/bin/env ${procname} \
+    ${nut_exporter_args}"
+
+start_precmd=nut_exporter_startprecmd
+
+nut_exporter_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${nut_exporter_user} -g ${nut_exporter_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${nut_exporter_textfile_dir} ]; then
+        install -d -o ${nut_exporter_user} -g ${nut_exporter_group} -m 1755 ${nut_exporter_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
