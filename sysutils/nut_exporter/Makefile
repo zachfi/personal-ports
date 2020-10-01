@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	nut_exporter
-PORTVERSION=	0.0.4
+PORTVERSION=	0.0.5
 PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
