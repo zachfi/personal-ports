@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	weigh
-PORTVERSION=	1.0.2
+PORTVERSION=	1.0.3
 PORTREVISION=	3
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
