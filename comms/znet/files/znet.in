@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # PROVIDE: znet
-# REQUIRE: LOGIN
-# KEYWORD: shutdown
+# REQUIRE: networking
+# KEYWORD:
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
@@ -15,41 +15,21 @@
 #               Default is "nobody".
 # znet_args (string):          Set extra arguments to pass to znet
 #               Default is "".
-# znet_listen_address (string):Set ip:port that znet will listen on
-#               Default is ":9100".
-# znet_textfile_dir (string):  Set directory that znet will watch
-#               Default is "/var/tmp/znet".
 
 . /etc/rc.subr
 
-name=znet
-rcvar=znet_enable
+name="znet"
+rcvar="znet_enable"
+pidfile=/var/run/znet.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/znet"
+command_args="-S -T ${name} -r -f -p ${pidfile} /usr/bin/env ${procname} ${znet_args}"
 
 load_rc_config $name
 
 : ${znet_enable:="NO"}
 : ${znet_user:="nobody"}
 : ${znet_group:="nobody"}
-: ${znet_args:="server --config /usr/local/etc/znet.yaml"}
-: ${znet_textfile_dir:="/var/tmp/znet"}
+: ${znet_args:="znet --config /usr/local/etc/znet.yaml"}
 
-
-pidfile=/var/run/znet.pid
-command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/znet"
-command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${znet_args}"
-
-start_precmd=znet_startprecmd
-
-znet_startprecmd()
-{
-    if [ ! -e ${pidfile} ]; then
-        install -o ${znet_user} -g ${znet_group} /dev/null ${pidfile};
-    fi
-    if [ ! -d ${znet_textfile_dir} ]; then
-        install -d -o ${znet_user} -g ${znet_group} -m 1755 ${znet_textfile_dir}
-    fi
-}
-
-load_rc_config $name
 run_rc_command "$1"

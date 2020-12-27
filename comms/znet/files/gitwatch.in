@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # PROVIDE: gitwatch
-# REQUIRE: LOGIN
-# KEYWORD: shutdown
+# REQUIRE: networking
+# KEYWORD:
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
@@ -15,15 +15,15 @@
 #               Default is "nobody".
 # gitwatch_args (string):          Set extra arguments to pass to gitwatch
 #               Default is "".
-# gitwatch_listen_address (string):Set ip:port that gitwatch will listen on
-#               Default is ":9100".
-# gitwatch_textfile_dir (string):  Set directory that gitwatch will watch
-#               Default is "/var/tmp/gitwatch".
 
 . /etc/rc.subr
 
-name=gitwatch
-rcvar=gitwatch_enable
+name="gitwatch"
+rcvar="gitwatch_enable"
+pidfile=/var/run/gitwatch.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/znet"
+command_args="-S -T ${name} -r -f -p ${pidfile} /usr/bin/env ${procname} ${gitwatch_args}"
 
 load_rc_config $name
 
@@ -31,25 +31,5 @@ load_rc_config $name
 : ${gitwatch_user:="nobody"}
 : ${gitwatch_group:="nobody"}
 : ${gitwatch_args:="gitwatch --config /usr/local/etc/gitwatch.yaml"}
-: ${gitwatch_textfile_dir:="/var/tmp/gitwatch"}
 
-
-pidfile=/var/run/gitwatch.pid
-command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/znet"
-command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${gitwatch_args}"
-
-start_precmd=gitwatch_startprecmd
-
-gitwatch_startprecmd()
-{
-    if [ ! -e ${pidfile} ]; then
-        install -o ${gitwatch_user} -g ${gitwatch_group} /dev/null ${pidfile};
-    fi
-    if [ ! -d ${gitwatch_textfile_dir} ]; then
-        install -d -o ${gitwatch_user} -g ${gitwatch_group} -m 1755 ${gitwatch_textfile_dir}
-    fi
-}
-
-load_rc_config $name
 run_rc_command "$1"

@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # PROVIDE: arpwatch
-# REQUIRE: LOGIN
-# KEYWORD: shutdown
+# REQUIRE: networking
+# KEYWORD:
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
@@ -15,15 +15,15 @@
 #               Default is "nobody".
 # arpwatch_args (string):          Set extra arguments to pass to arpwatch
 #               Default is "".
-# arpwatch_listen_address (string):Set ip:port that arpwatch will listen on
-#               Default is ":9100".
-# arpwatch_textfile_dir (string):  Set directory that arpwatch will watch
-#               Default is "/var/tmp/arpwatch".
 
 . /etc/rc.subr
 
-name=arpwatch
-rcvar=arpwatch_enable
+name="arpwatch"
+rcvar="arpwatch_enable"
+pidfile=/var/run/arpwatch.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/znet"
+command_args="-S -T ${name} -r -f -p ${pidfile} /usr/bin/env ${procname} ${arpwatch_args}"
 
 load_rc_config $name
 
@@ -31,25 +31,5 @@ load_rc_config $name
 : ${arpwatch_user:="nobody"}
 : ${arpwatch_group:="nobody"}
 : ${arpwatch_args:="arpwatch --config /usr/local/etc/arpwatch.yaml"}
-: ${arpwatch_textfile_dir:="/var/tmp/arpwatch"}
 
-
-pidfile=/var/run/arpwatch.pid
-command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/znet"
-command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${arpwatch_args}"
-
-start_precmd=arpwatch_startprecmd
-
-arpwatch_startprecmd()
-{
-    if [ ! -e ${pidfile} ]; then
-        install -o ${arpwatch_user} -g ${arpwatch_group} /dev/null ${pidfile};
-    fi
-    if [ ! -d ${arpwatch_textfile_dir} ]; then
-        install -d -o ${arpwatch_user} -g ${arpwatch_group} -m 1755 ${arpwatch_textfile_dir}
-    fi
-}
-
-load_rc_config $name
 run_rc_command "$1"

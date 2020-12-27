@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # PROVIDE: harvest
-# REQUIRE: LOGIN
-# KEYWORD: shutdown
+# REQUIRE: networking
+# KEYWORD:
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
@@ -15,15 +15,15 @@
 #               Default is "nobody".
 # harvest_args (string):          Set extra arguments to pass to harvest
 #               Default is "".
-# harvest_listen_address (string):Set ip:port that harvest will listen on
-#               Default is ":9100".
-# harvest_textfile_dir (string):  Set directory that harvest will watch
-#               Default is "/var/tmp/harvest".
 
 . /etc/rc.subr
 
-name=harvest
-rcvar=harvest_enable
+name="harvest"
+rcvar="harvest_enable"
+pidfile=/var/run/harvest.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/znet"
+command_args="-S -T ${name} -r -f -p ${pidfile} /usr/bin/env ${procname} ${harvest_args}"
 
 load_rc_config $name
 
@@ -31,25 +31,5 @@ load_rc_config $name
 : ${harvest_user:="nobody"}
 : ${harvest_group:="nobody"}
 : ${harvest_args:="harvest --config /usr/local/etc/harvest.yaml"}
-: ${harvest_textfile_dir:="/var/tmp/harvest"}
 
-
-pidfile=/var/run/harvest.pid
-command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/znet"
-command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} ${harvest_args}"
-
-start_precmd=harvest_startprecmd
-
-harvest_startprecmd()
-{
-    if [ ! -e ${pidfile} ]; then
-        install -o ${harvest_user} -g ${harvest_group} /dev/null ${pidfile};
-    fi
-    if [ ! -d ${harvest_textfile_dir} ]; then
-        install -d -o ${harvest_user} -g ${harvest_group} -m 1755 ${harvest_textfile_dir}
-    fi
-}
-
-load_rc_config $name
 run_rc_command "$1"
