@@ -21,6 +21,7 @@
 name="timer"
 rcvar="timer_enable"
 pidfile="/var/run/${name}.pid"
+supervisor_pidfile="/var/run/supervisor_${name}.pid"
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/znet"
 
@@ -31,6 +32,6 @@ load_rc_config $name
 : ${timer_group:="nobody"}
 : ${timer_args:="${name} --config /usr/local/etc/${name}.yaml"}
 
-command_args="-T ${name} -r -f -S -p ${pidfile} ${procname} ${timer_args}"
+command_args="-T ${name} -r -f -S -p ${pidfile} -P ${supervisor_pidfile} ${procname} ${timer_args}"
 
 run_rc_command "$1"
