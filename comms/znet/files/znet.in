@@ -29,7 +29,7 @@ load_rc_config $name
 : ${znet_enable:="NO"}
 : ${znet_user:="nobody"}
 : ${znet_group:="nobody"}
-: ${znet_args:="znet --config /usr/local/etc/znet.yaml"}
+: ${znet_args:="--config /usr/local/etc/znet.yaml"}
 
 command_args="-S -T ${name} -r -f -p ${pidfile} ${procname} ${znet_args}"
 
