@@ -20,7 +20,7 @@
 
 name="builder"
 rcvar="builder_enable"
-pidfile=/var/run/builder.pid
+pidfile="/var/run/${name}.pid"
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/znet"
 
@@ -29,8 +29,8 @@ load_rc_config $name
 : ${builder_enable:="NO"}
 : ${builder_user:="nobody"}
 : ${builder_group:="nobody"}
-: ${builder_args:="builder --config /usr/local/etc/builder.yaml"}
+: ${builder_args:="${name} --config /usr/local/etc/${name}.yaml"}
 
-command_args="-S -T ${name} -r -f -p ${pidfile} ${procname} ${builder_args}"
+command_args="-T ${name} -r -f -S -p ${pidfile} ${procname} ${builder_args}"
 
 run_rc_command "$1"

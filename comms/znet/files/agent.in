@@ -20,7 +20,7 @@
 
 name="agent"
 rcvar="agent_enable"
-pidfile=/var/run/agent.pid
+pidfile="/var/run/${name}.pid"
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/znet"
 
@@ -29,8 +29,8 @@ load_rc_config $name
 : ${agent_enable:="NO"}
 : ${agent_user:="nobody"}
 : ${agent_group:="nobody"}
-: ${agent_args:="agent --config /usr/local/etc/agent.yaml"}
+: ${agent_args:="${name} --config /usr/local/etc/${name}.yaml"}
 
-command_args="-S -T ${name} -r -f -p ${pidfile} ${procname} ${agent_args}"
+command_args="-T ${name} -r -f -S -p ${pidfile} ${procname} ${agent_args}"
 
 run_rc_command "$1"
