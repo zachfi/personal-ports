@@ -34,4 +34,17 @@ load_rc_config $name
 
 command_args="-T ${name} -r -f -S -p ${pidfile} -P ${supervisor_pidfile} ${procname} ${agent_args}"
 
+start_precmd=agent_startprecmd
+
+agent_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${agent_user} -g ${agent_group} /dev/null ${pidfile};
+    fi
+
+    if [ ! -e ${supervisor_pidfile} ]; then
+        install -o ${agent_user} -g ${agent_group} /dev/null ${supervisor_pidfile};
+    fi
+}
+
 run_rc_command "$1"
