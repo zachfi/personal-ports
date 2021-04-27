@@ -1,7 +1,6 @@
 astro/openweathermap_exporter/
 astro/wunderground_exporter/
 comms/znet/
-net/arp_exporter/
 net/goflow_exporter/
 net/mosquitto_exporter/
 sysutils/grafana-loki/
