@@ -3,6 +3,7 @@ astro/wunderground_exporter/
 comms/znet/
 net/goflow_exporter/
 net/mosquitto_exporter/
+sysutils/freebsd_exporter/
 sysutils/grafana-loki/
 sysutils/newrelic-fluent-bit-output/
 sysutils/nut_exporter/

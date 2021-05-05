@@ -1,0 +1,5 @@
+freebsd_exporter is a Prometheus exporter for FreeBSD systems.
+
+* nfsstat
+
+WWW: https://github.com/xaque208/freebsd_exporter
