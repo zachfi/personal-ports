@@ -2,7 +2,7 @@
 
 PORTNAME=	freebsd_exporter
 PORTVERSION=	0.2.0
-PORTREVISION=	0
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -13,14 +13,14 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go
+USES=		go:modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	xaque208
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
-GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
+GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}'
 
 PLIST_FILES=	bin/freebsd_exporter
 
