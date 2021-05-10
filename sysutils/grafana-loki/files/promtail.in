@@ -37,7 +37,8 @@ load_rc_config $name
 pidfile=/var/run/promtail.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/promtail"
-command_args="-S -T ${name} -p ${pidfile} /usr/bin/env ${procname} \
+command_args="-S -T ${name} -p ${pidfile} -u ${promtail_user} \
+    /usr/bin/env ${procname} \
     ${promtail_args}"
 
 start_precmd=promtail_startprecmd
