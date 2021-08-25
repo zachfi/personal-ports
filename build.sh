@@ -3,7 +3,7 @@
 sudo -i portshaker -v
 
 tree=personal
-jails=(larch13 larch12)
+jails=(larch13)
 list=/home/zach/Code/personal-ports/personal.list
 
 for jail in "${jails[@]}"; do
