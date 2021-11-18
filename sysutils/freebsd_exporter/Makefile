@@ -2,7 +2,7 @@
 
 PORTNAME=	freebsd_exporter
 PORTVERSION=	0.3.0
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -20,7 +20,7 @@ GH_ACCOUNT=	xaque208
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
-GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}'
+GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/freebsd_exporter
 

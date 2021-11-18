@@ -1,4 +1,6 @@
-#! /bin/bash
+#! /usr/local/bin/bash
+
+. ./lib/portsnap.sh
 
 set -e
 
@@ -14,6 +16,8 @@ if [ -z "$PORT" ]; then
 fi
 
 TAG_VER=$(echo $VERSION | sed -e '/^v/s/^v\(.*\)$/\1/g')
+
+ensure_portsnap
 
 pushd $PORT
     sed -i "" -e "s/PORTVERSION=.*/PORTVERSION=	$TAG_VER/g" Makefile
