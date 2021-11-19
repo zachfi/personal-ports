@@ -30,7 +30,7 @@ load_rc_config $name
 : ${znet_enable:="NO"}
 : ${znet_user:="nobody"}
 : ${znet_group:="nobody"}
-: ${znet_args:="server --config /usr/local/etc/${name}.yaml"}
+: ${znet_args:="--config /usr/local/etc/${name}.yaml"}
 
 command_args="-T ${name} -r -f -S -p ${pidfile} -P ${supervisor_pidfile} ${procname} ${znet_args}"
 
