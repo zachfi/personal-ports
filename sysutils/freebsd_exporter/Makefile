@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	freebsd_exporter
-PORTVERSION=	0.3.1
+PORTVERSION=	0.3.2
 PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
