@@ -19,7 +19,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	xaque208
 GH_SUBDIR=	cmd/znet
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
+GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}/cmd/znet
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
