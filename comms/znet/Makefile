@@ -13,7 +13,7 @@ LICENSE=	APACHE20
 
 BUILD_DEPENDS=	git:devel/git
 
-#USES=		go:modules
+USES=		go:modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	xaque208
