@@ -2,7 +2,7 @@
 
 PORTNAME=	znet
 PORTVERSION=	0.30.2
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=v
 CATEGORIES=	comms
 
@@ -18,8 +18,8 @@ USE_GITHUB=	yes
 
 GH_ACCOUNT=	xaque208
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}/cmd/znet
-GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}/cmd/znet
+GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
+GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}/cmd/znet:znet
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/znet
