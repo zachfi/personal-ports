@@ -1,4 +1,4 @@
 sysutils/freebsd_exporter/
-sysutils/freebsd-controller/
+sysutils/freebsd_controller/
 sysutils/grafana-loki/
 sysutils/weigh/
