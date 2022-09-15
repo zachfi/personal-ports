@@ -24,7 +24,7 @@ GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/freebsd-controller
 
-USE_RC_SUBR=	freebsd-controller
+USE_RC_SUBR=	freebsd_controller
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/freebsd-controller ${STAGEDIR}${PREFIX}/bin
