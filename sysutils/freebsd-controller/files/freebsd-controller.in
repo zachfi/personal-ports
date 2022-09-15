@@ -21,7 +21,7 @@
 . /etc/rc.subr
 
 name=freebsd-controller
-rcvar=freebsd-controller_enable
+rcvar=freebsd_controller_enable
 
 load_rc_config $name
 
@@ -38,9 +38,9 @@ procname="%%PREFIX%%/bin/freebsd-controller"
 command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} \
     ${freebsd_controller_args}"
 
-start_precmd=freebsd-controller_startprecmd
+start_precmd=freebsd_controller_startprecmd
 
-freebsd-controller_startprecmd()
+freebsd_controller_startprecmd()
 {
     if [ ! -e ${pidfile} ]; then
         install -o ${freebsd_controller_user} -g ${freebsd_controller_group} /dev/null ${pidfile};

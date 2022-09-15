@@ -1,7 +1,7 @@
 #! /bin/bash
 
 tree=personal
-jails=(larch13 larch12)
+jails=(znet13-1)
 list=/home/zach/Code/personal-ports/personal.list
 
 for jail in "${jails[@]}"; do
