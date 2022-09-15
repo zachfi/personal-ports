@@ -4,6 +4,7 @@ comms/znet/
 net/goflow_exporter/
 net/mosquitto_exporter/
 sysutils/freebsd_exporter/
+sysutils/freebsd-controller/
 sysutils/grafana-loki/
 sysutils/nut_exporter/
 sysutils/openldap_exporter/
