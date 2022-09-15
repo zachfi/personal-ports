@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# PROVIDE: freebsd-controller
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# freebsd_controller_enable (bool):          Set to NO by default.
+#               Set it to YES to enable freebsd-controller.
+# freebsd_controller_user (string):          Set user that freebsd-controller will run under
+#               Default is "nobody".
+# freebsd_controller_group (string):         Set group that freebsd-controller will run under
+#               Default is "nobody".
+# freebsd_controller_args (string):          Set extra arguments to pass to freebsd-controller
+#               Default is "".
+# freebsd_controller_listen_address (string):Set ip:port that freebsd-controller will listen on
+#               Default is ":9100".
+
+. /etc/rc.subr
+
+name=freebsd-controller
+rcvar=freebsd-controller_enable
+
+load_rc_config $name
+
+: ${freebsd_controller_enable:="NO"}
+: ${freebsd_controller_user:="nobody"}
+: ${freebsd_controller_group:="nobody"}
+: ${freebsd_controller_args:=""}
+: ${freebsd_controller_textfile_dir:="/var/tmp/freebsd-controller"}
+
+
+pidfile=/var/run/freebsd-controller.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/freebsd-controller"
+command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} \
+    ${freebsd_controller_args}"
+
+start_precmd=freebsd-controller_startprecmd
+
+freebsd-controller_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o ${freebsd_controller_user} -g ${freebsd_controller_group} /dev/null ${pidfile};
+    fi
+    if [ ! -d ${freebsd_controller_textfile_dir} ]; then
+        install -d -o ${freebsd_controller_user} -g ${freebsd_controller_group} -m 1755 ${freebsd_controller_textfile_dir}
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
