@@ -1,8 +1,8 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
-PORTNAME=	freebsd-controller
+PORTNAME=	freebsd_controller
 PORTVERSION=	0.1.1
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -22,11 +22,11 @@ GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
-PLIST_FILES=	bin/freebsd-controller
+PLIST_FILES=	bin/freebsd_controller
 
 USE_RC_SUBR=	freebsd_controller
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/freebsd-controller ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/freebsd_controller ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>
