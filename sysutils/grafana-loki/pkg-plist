@@ -1,6 +1,5 @@
 bin/loki
 bin/promtail
-bin/logcli
 @sample etc/loki.yaml.sample
 @sample etc/promtail.yaml.sample
 @dir(root,nobody,0770) /var/loki
