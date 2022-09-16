@@ -34,7 +34,7 @@ load_rc_config $name
 pidfile=/var/run/freebsd_controller.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/freebsd_controller"
-command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env ${procname} \
+command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin ${procname} \
     ${freebsd_controller_args}"
 
 start_precmd=freebsd_controller_startprecmd
