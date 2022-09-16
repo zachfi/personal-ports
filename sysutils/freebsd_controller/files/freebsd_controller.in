@@ -10,7 +10,7 @@
 # freebsd_controller_enable (bool):          Set to NO by default.
 #               Set it to YES to enable freebsd_controller.
 # freebsd_controller_user (string):          Set user that freebsd_controller will run under
-#               Default is "nobody".
+#               Default is "root".
 # freebsd_controller_group (string):         Set group that freebsd_controller will run under
 #               Default is "nobody".
 # freebsd_controller_args (string):          Set extra arguments to pass to freebsd_controller
@@ -26,7 +26,7 @@ rcvar=freebsd_controller_enable
 load_rc_config $name
 
 : ${freebsd_controller_enable:="NO"}
-: ${freebsd_controller_user:="nobody"}
+: ${freebsd_controller_user:="root"}
 : ${freebsd_controller_group:="nobody"}
 : ${freebsd_controller_args:=""}
 
