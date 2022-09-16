@@ -1,6 +1,6 @@
 PORTNAME=	grafana-loki
 PORTVERSION=	2.6.1
-PORTREVISION=	5
+PORTREVISION=	0
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -17,7 +17,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	grafana
 GH_PROJECT=	loki
 
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/loki github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/promtail github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/logcli
+GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/loki github.com/${GH_ACCOUNT}/${GH_PROJECT}/clients/cmd/promtail
+GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 USE_RC_SUBR=	loki promtail
 
