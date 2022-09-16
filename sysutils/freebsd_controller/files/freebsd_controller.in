@@ -12,7 +12,7 @@
 # freebsd_controller_user (string):          Set user that freebsd_controller will run under
 #               Default is "root".
 # freebsd_controller_group (string):         Set group that freebsd_controller will run under
-#               Default is "nobody".
+#               Default is "wheel".
 # freebsd_controller_args (string):          Set extra arguments to pass to freebsd_controller
 #               Default is "".
 # freebsd_controller_listen_address (string):Set ip:port that freebsd_controller will listen on
@@ -27,7 +27,7 @@ load_rc_config $name
 
 : ${freebsd_controller_enable:="NO"}
 : ${freebsd_controller_user:="root"}
-: ${freebsd_controller_group:="nobody"}
+: ${freebsd_controller_group:="wheel"}
 : ${freebsd_controller_args:=""}
 
 
