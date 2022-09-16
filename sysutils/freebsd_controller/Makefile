@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	freebsd_controller
-PORTVERSION=	0.1.7
+PORTVERSION=	0.1.8
 PORTREVISION=	5
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
