@@ -15,8 +15,6 @@
 #               Default is "wheel".
 # nodemanager_args (string):          Set extra arguments to pass to nodemanager
 #               Default is "".
-# nodemanager_listen_address (string):Set ip:port that nodemanager will listen on
-#               Default is ":9100".
 
 . /etc/rc.subr
 
