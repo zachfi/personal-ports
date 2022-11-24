@@ -18,7 +18,7 @@ GH_ACCOUNT=	grafana
 GH_PROJECT=	loki
 
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/clients/cmd/promtail
-GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
+GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/loki/pkg/util/build.Version=v${PORTVERSION}' -mod=vendor
 
 USE_RC_SUBR=	promtail
 
