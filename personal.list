@@ -2,3 +2,4 @@ sysutils/freebsd_exporter/
 sysutils/nodemanager/
 sysutils/grafana-promtail/
 sysutils/weigh/
+sysutils/lpk/

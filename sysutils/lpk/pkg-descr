@@ -1,0 +1,3 @@
+LPK is used to read SSH public keys from LDAP for use with the AuthorizedKeysCommand in OpenSSH.
+
+WWW: https://github.com/xaque208/lpk
