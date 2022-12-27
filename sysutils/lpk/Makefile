@@ -2,7 +2,7 @@
 
 PORTNAME=	lpk
 PORTVERSION=	0.0.1
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -13,13 +13,14 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go
+USES=		go:modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	xaque208
 GH_PROJECT=	lpk
 
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/lpk
+GO_BUILDFLAGS=	-mod=vendor
 
 PLIST_FILES=	bin/lpk
 
