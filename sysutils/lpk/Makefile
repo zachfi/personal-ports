@@ -25,6 +25,6 @@ GO_BUILDFLAGS=	-mod=vendor
 PLIST_FILES=	bin/lpk
 
 do-install:
-	${INSTALL_PROGRAM} -m 0700 ${WRKDIR}/bin/lpk ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} -m 0500 ${WRKDIR}/bin/lpk ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>
