@@ -2,7 +2,7 @@
 
 PORTNAME=	lpk
 PORTVERSION=	0.0.1
-PORTREVISION=	0
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -24,6 +24,6 @@ GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
 PLIST_FILES=	bin/lpk
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/lpk ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} -m 0700 ${WRKDIR}/bin/lpk ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>
