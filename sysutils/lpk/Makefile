@@ -17,9 +17,9 @@ USES=		go
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	xaque208
+GH_PROJECT=	lpk
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}/cmd/${PORTNAME}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}/cmd/${PORTNAME}
+GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/lpk
 
 PLIST_FILES=	bin/lpk
 
