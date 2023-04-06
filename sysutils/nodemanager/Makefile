@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	nodemanager
-PORTVERSION=	0.1.25
+PORTVERSION=	0.1.27
 PORTREVISION=	3
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
