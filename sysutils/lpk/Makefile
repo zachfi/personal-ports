@@ -16,7 +16,7 @@ BUILD_DEPENDS=	git:devel/git
 USES=		go:modules
 USE_GITHUB=	yes
 
-GH_ACCOUNT=	xaque208
+GH_ACCOUNT=	zachfi
 GH_PROJECT=	lpk
 
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/lpk
