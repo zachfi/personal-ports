@@ -2,11 +2,11 @@
 
 PORTNAME=	freebsd_controller
 PORTVERSION=	0.1.8
-PORTREVISION=	5
+PORTREVISION=	6
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	A Kubernetes Controller on FreeBSD
 
 LICENSE=	MIT

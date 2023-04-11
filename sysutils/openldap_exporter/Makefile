@@ -2,11 +2,11 @@
 
 PORTNAME=	openldap_exporter
 PORTVERSION=	1.1.1
-PORTREVISION=	3
+PORTREVISION=	4
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	Prometheus Exporter for OpenLDAP
 
 LICENSE=	MIT

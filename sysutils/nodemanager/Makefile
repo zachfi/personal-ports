@@ -2,11 +2,11 @@
 
 PORTNAME=	nodemanager
 PORTVERSION=	0.1.27
-PORTREVISION=	3
+PORTREVISION=	4
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	A Kubernetes controller for node management
 
 LICENSE=	MIT

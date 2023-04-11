@@ -1,10 +1,10 @@
 PORTNAME=	grafana-loki
 PORTVERSION=	2.6.1
-PORTREVISION=	0
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	Like Prometheus, but for logs
 
 LICENSE=	MIT

@@ -1,10 +1,10 @@
 PORTNAME=	grafana-promtail
 PORTVERSION=	2.7.5
-PORTREVISION=	0
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	Like Prometheus, but for logs
 
 LICENSE=	MIT

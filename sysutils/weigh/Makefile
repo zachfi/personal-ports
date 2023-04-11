@@ -2,11 +2,11 @@
 
 PORTNAME=	weigh
 PORTVERSION=	1.0.3
-PORTREVISION=	3
+PORTREVISION=	4
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	Count and sort directories by byte weight
 
 LICENSE=	MIT

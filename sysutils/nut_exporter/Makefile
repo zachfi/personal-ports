@@ -2,11 +2,11 @@
 
 PORTNAME=	nut_exporter
 PORTVERSION=	0.0.6
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	Prometheus Exporter for NUT
 
 LICENSE=	MIT

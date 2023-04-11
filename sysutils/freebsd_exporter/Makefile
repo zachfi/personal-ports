@@ -2,11 +2,11 @@
 
 PORTNAME=	freebsd_exporter
 PORTVERSION=	0.3.3
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	zach@zleslie.info
+MAINTAINER=	contact@zach.fi
 COMMENT=	Prometheus Exporter for FreeBSD
 
 LICENSE=	MIT
