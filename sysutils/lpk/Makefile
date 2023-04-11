@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	lpk
-PORTVERSION=	0.0.1
+PORTVERSION=	0.0.2
 PORTREVISION=	6
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
