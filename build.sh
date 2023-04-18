@@ -3,7 +3,7 @@
 sudo -i portshaker -v
 
 tree=personal
-jails=(znet13-1)
+jails=(pkg13-2)
 list=/home/zach/Code/personal-ports/personal.list
 
 for jail in "${jails[@]}"; do
