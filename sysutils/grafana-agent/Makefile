@@ -5,7 +5,7 @@ DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
 MAINTAINER=	contact@zach.fi
-COMMENT=	Grafama Agent for observability swiss-army
+COMMENT=	Grafana Agent for observability swiss-army
 
 LICENSE=	MIT
 
