@@ -1,4 +1,5 @@
-sysutils/freebsd_exporter/
+#sysutils/freebsd_exporter/
+sysutils/grafana-agent/
 sysutils/nodemanager/
 sysutils/grafana-promtail/
 sysutils/weigh/
