@@ -1,9 +1,10 @@
 #! /bin/bash
+set -e
 
 sudo -i portshaker -v
 
 tree=personal
-jails=(pkg13-2 pkg14-0)
+jails=(pkg14-0)
 list=/home/zach/Code/personal-ports/personal.list
 
 for jail in "${jails[@]}"; do
