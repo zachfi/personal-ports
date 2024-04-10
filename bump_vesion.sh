@@ -32,7 +32,7 @@ popd
 sudo -i bash -c portshaker -v
 
 tree=personal
-jail=znet13-1
+jail=pkg14-0
 list=/home/zach/Code/personal-ports/personal.list
 
 sudo poudriere bulk -f $list -p $tree -j $jail
