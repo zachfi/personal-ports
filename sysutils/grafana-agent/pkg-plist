@@ -1,2 +1,0 @@
-bin/promtail
-@sample etc/promtail.yaml.sample
