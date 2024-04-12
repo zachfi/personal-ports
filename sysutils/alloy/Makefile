@@ -5,7 +5,7 @@ DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
 MAINTAINER=	contact@zach.fi
-COMMENT=	Grafana Agent for observability swiss-army
+COMMENT=	Grafana Alloy for observability swiss-army
 
 LICENSE=	MIT
 
@@ -18,7 +18,7 @@ GH_ACCOUNT=	grafana
 GH_PROJECT=	alloy
 
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${PORTVERSION}' -mod=vendor
+GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${PORTVERSION}'
 
 USE_RC_SUBR=	alloy
 
