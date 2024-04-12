@@ -9,7 +9,7 @@ COMMENT=	Grafana Agent for observability swiss-army
 
 LICENSE=	MIT
 
-BUILD_DEPENDS=	git:devel/git go:lang/go122
+BUILD_DEPENDS=	git:devel/git
 
 USES=		go:1.22
 USE_GITHUB=	yes
