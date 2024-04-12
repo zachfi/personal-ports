@@ -17,6 +17,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	grafana
 GH_PROJECT=	alloy
 
+GO_PKGNAME=	alloy
+GO_MODULE=	github.com/grafana/alloy
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${PORTVERSION}'
 
