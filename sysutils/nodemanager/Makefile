@@ -29,6 +29,6 @@ PLIST_FILES=	bin/nodemanager
 USE_RC_SUBR=	nodemanager
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/cmd ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/cmd ${STAGEDIR}${PREFIX}/bin/nodemanager
 
 .include <bsd.port.mk>
