@@ -15,15 +15,13 @@ BUILD_DEPENDS=	git:devel/git
 
 USES=		go:1.22,modules
 
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	zachfi
 GH_PROJECT=	nodemanager
-GH_TAGNAME=	${DISTVERSIONPREFIX}${PORTVERSION}
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
+GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
+#GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/nodemanager
