@@ -20,7 +20,7 @@ GH_ACCOUNT=	zachfi
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
-GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
+GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}'
 
 PLIST_FILES=	bin/nodemanager
 
