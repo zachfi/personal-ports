@@ -17,9 +17,11 @@ USES=		go:1.22,modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	zachfi
+GH_PROJECT=	nodemanager
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
+GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}'
 
 PLIST_FILES=	bin/nodemanager
