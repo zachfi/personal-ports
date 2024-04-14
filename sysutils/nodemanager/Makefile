@@ -22,7 +22,7 @@ GH_PROJECT=	nodemanager
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
-GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}'
+GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/nodemanager
 
