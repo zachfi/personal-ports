@@ -27,9 +27,7 @@ USE_RC_SUBR=	alloy
 _USES_fetch+= 600:go-pre-fetch
 go-pre-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME} dependencies";
-	(cd ${DISTDIR}/${DIST_SUBDIR};
-		[ -e syntax/go.mod ] || mkdir syntax/; \
-		${RLN} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
+	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; ${RLN} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
