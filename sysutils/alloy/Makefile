@@ -24,9 +24,10 @@ GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${P
 
 USE_RC_SUBR=	alloy
 
+_USES_fetch+= 600:go-pre-fetch
 go-pre-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME} dependencies";
-	@(cd ${DISTDIR}/${DIST_SUBDIR}; ln -s ${PORTNAME}-${PORTVERSION}/syntax)
+	(cd ${DISTDIR}/${DIST_SUBDIR}; ln -s ${PORTNAME}-${PORTVERSION}/syntax)
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
