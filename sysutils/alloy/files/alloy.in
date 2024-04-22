@@ -1,54 +1,46 @@
 #!/bin/sh
 
-# PROVIDE: promtail
+# PROVIDE: alloy
 # REQUIRE: LOGIN
 # KEYWORD: shutdown
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# promtail_enable (bool):          Set to NO by default.
-#               Set it to YES to enable promtail.
-# promtail_user (string):          Set user that promtail will run under
+# alloy_enable (bool):          Set to NO by default.
+#               Set it to YES to enable alloy.
+# alloy_user (string):          Set user that alloy will run under
 #               Default is "nobody".
-# promtail_group (string):         Set group that promtail will run under
+# alloy_group (string):         Set group that alloy will run under
 #               Default is "nobody".
-# promtail_args (string):          Set extra arguments to pass to promtail
+# alloy_args (string):          Set extra arguments to pass to alloy
 #               Default is "".
-# promtail_listen_address (string):Set ip:port that promtail will listen on
-#               Default is ":9100".
-# promtail_textfile_dir (string):  Set directory that promtail will watch
-#               Default is "/var/tmp/promtail".
 
 . /etc/rc.subr
 
-name=promtail
-rcvar=promtail_enable
+name=alloy
+rcvar=alloy_enable
 
 load_rc_config $name
 
-: ${promtail_enable:="NO"}
-: ${promtail_user:="nobody"}
-: ${promtail_group:="nobody"}
-: ${promtail_args:=""}
-: ${promtail_textfile_dir:="/var/tmp/promtail"}
+: ${alloy_enable:="NO"}
+: ${alloy_user:="nobody"}
+: ${alloy_group:="nobody"}
+: ${alloy_args:="run /usr/local/etc/alloy.flow"}
 
 
-pidfile=/var/run/promtail.pid
+pidfile=/var/run/alloy.pid
 command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/promtail"
-command_args="-S -T ${name} -p ${pidfile} /usr/bin/env ${procname} \
-    ${promtail_args}"
+procname="%%PREFIX%%/bin/alloy"
+command_args="-S -r -T ${name} -p ${pidfile} /usr/bin/env ${procname} \
+    ${alloy_args}"
 
-start_precmd=promtail_startprecmd
+start_precmd=alloy_startprecmd
 
-promtail_startprecmd()
+alloy_startprecmd()
 {
     if [ ! -e ${pidfile} ]; then
-        install -o ${promtail_user} -g ${promtail_group} /dev/null ${pidfile};
-    fi
-    if [ ! -d ${promtail_textfile_dir} ]; then
-        install -d -o ${promtail_user} -g ${promtail_group} -m 1755 ${promtail_textfile_dir}
+        install -o ${alloy_user} -g ${alloy_group} /dev/null ${pidfile};
     fi
 }
 
