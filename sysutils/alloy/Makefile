@@ -24,6 +24,10 @@ GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${P
 
 USE_RC_SUBR=	alloy
 
+go-pre-fetch:
+	@${ECHO_MSG} "===> Fetching ${GO_MODNAME} dependencies";
+	@(cd ${DISTDIR}/${DIST_SUBDIR}; ln -s ${PORTNAME}-${PORTVERSION}/syntax)
+
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
 	# ${INSTALL_DATA} ${WRKSRC}/clients/cmd/promtail/promtail-local-config.yaml ${STAGEDIR}${PREFIX}/etc/promtail.yaml.sample
