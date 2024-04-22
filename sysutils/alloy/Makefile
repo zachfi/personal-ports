@@ -24,7 +24,7 @@ GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${P
 
 USE_RC_SUBR=	alloy
 
-go-post-fetch:
+go-pre-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME} dependencies";
 	@(cd ${DISTDIR}/${DIST_SUBDIR}; ln -s ${PORTNAME}-${PORTVERSION}/syntax)
 
