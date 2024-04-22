@@ -17,6 +17,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	grafana
 GH_PROJECT=	alloy
 
+# DISTFILES+=	syntax/go.rod
+
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
@@ -24,12 +26,23 @@ GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${P
 
 USE_RC_SUBR=	alloy
 
+_USES_extract+= 600:go-post-extract-syntax
+go-post-extract-syntax:
+	@${ECHO_MSG} "===> Getting ${GO_MODNAME}/syntax module";
+	@${ECHO_MSG} "===> GO_WRKSRC: ${GO_WRKSRC}";
+	@${ECHO_MSG} "===> WRKDIR: ${WRKDIR}";
+	@${ECHO_MSG} "===> WRKSRC: ${WRKSRC}";
+	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
+		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz -C syntax/ ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
+		${RLN} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
+
 _USES_fetch+= 600:go-pre-fetch
 go-pre-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME} dependencies";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
-		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz -C syntax/ ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
-		${RLN} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
+		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
+		cp ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
+
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
