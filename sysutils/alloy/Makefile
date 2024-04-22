@@ -1,6 +1,6 @@
 PORTNAME=	alloy
 PORTVERSION=	1.0.0
-PORTREVISION=	3
+PORTREVISION=	4
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -40,7 +40,7 @@ go-post-extract-syntax:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
-	${INSTALL_DATA} ${WRKSRC}/example-config.alloy ${STAGEDIR}${PREFIX}/alloy.flow.sample
+	${INSTALL_DATA} ${WRKSRC}/example-config.alloy ${STAGEDIR}${PREFIX}/etc/alloy.flow.sample
 
 post-install:
 	${MKDIR} ${STAGEDIR}/var/alloy

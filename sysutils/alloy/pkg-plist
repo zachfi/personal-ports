@@ -1,3 +1,3 @@
 bin/alloy
-@sample alloy.flow.sample
+@sample etc/alloy.flow.sample
 @dir(root,nobody,0770) /var/alloy
