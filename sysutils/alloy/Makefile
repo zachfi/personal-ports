@@ -1,11 +1,11 @@
 PORTNAME=	alloy
 PORTVERSION=	1.0.0
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
 MAINTAINER=	contact@zach.fi
-COMMENT=	Grafana Alloy for observability swiss-army
+COMMENT=	OpenTelemetry Collector distribution with programmable pipelines
 
 LICENSE=	MIT
 
@@ -16,8 +16,6 @@ USE_GITHUB=	yes
 
 GH_ACCOUNT=	grafana
 GH_PROJECT=	alloy
-
-# DISTFILES+=	syntax/go.rod
 
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
