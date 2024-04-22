@@ -28,7 +28,7 @@ _USES_fetch+= 600:go-pre-fetch
 go-pre-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME} dependencies";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
-		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz -C syntax/ ${PORTNAME}-${PORT_VERSION}/syntax/go.mod; \
+		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz -C syntax/ ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
 		${RLN} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
 
 do-install:
