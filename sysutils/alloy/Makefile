@@ -26,24 +26,21 @@ GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${P
 
 USE_RC_SUBR=	alloy
 
-_USES_extract+= 600:go-post-extract-syntax
-go-post-extract-syntax:
-	@${ECHO_MSG} "===> Getting ${GO_MODNAME}/syntax module";
-	@${ECHO_MSG} "===> GO_WRKSRC: ${GO_WRKSRC}";
-	@${ECHO_MSG} "===> WRKDIR: ${WRKDIR}";
-	@${ECHO_MSG} "===> WRKSRC: ${WRKSRC}";
-	cp -r ${WRKDIR}/${PORTNAME}-${PORTVERSION}/syntax ${GO_WRKSRC}/syntax;
-
+ # Copy the go.mod so we can get all the dist files during fetch.
 _USES_fetch+= 600:go-pre-fetch
 go-pre-fetch:
-	@${ECHO_MSG} "===> Fetching ${GO_MODNAME} dependencies";
+	@${ECHO_MSG} "===> Fetching ${GO_MODNAME}/syntax dependency";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
 		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
 		cp ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
 
+# Copy over the syntax/ directory from the source extract to ensure the go mod
+# replace for ./syntax is handled with the correct files on disk.
+_USES_extract+= 600:go-post-extract-syntax
+go-post-extract-syntax:
+	@cp -r ${WRKDIR}/${PORTNAME}-${PORTVERSION}/syntax ${GO_WRKSRC}/syntax;
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
-	# ${INSTALL_DATA} ${WRKSRC}/clients/cmd/promtail/promtail-local-config.yaml ${STAGEDIR}${PREFIX}/etc/promtail.yaml.sample
 
 .include <bsd.port.mk>
