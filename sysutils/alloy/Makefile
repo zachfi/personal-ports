@@ -32,9 +32,7 @@ go-post-extract-syntax:
 	@${ECHO_MSG} "===> GO_WRKSRC: ${GO_WRKSRC}";
 	@${ECHO_MSG} "===> WRKDIR: ${WRKDIR}";
 	@${ECHO_MSG} "===> WRKSRC: ${WRKSRC}";
-	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
-		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz -C syntax/ ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
-		${RLN} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
+	cp -r ${WRKDIR}/${PORTNAME}-${PORTVERSION}/syntax ${GO_WRKSRC}/syntax;
 
 _USES_fetch+= 600:go-pre-fetch
 go-pre-fetch:
