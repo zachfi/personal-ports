@@ -1,1 +1,3 @@
 bin/alloy
+@sample example-config.alloy
+@dir(root,nobody,0770) /var/alloy
