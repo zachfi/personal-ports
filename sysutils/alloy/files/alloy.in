@@ -14,7 +14,7 @@
 # alloy_group (string):         Set group that alloy will run under
 #               Default is "nobody".
 # alloy_listen_address (string):Set ip:port that alloy will listen on
-#               Default is ":9100".
+#               Default is ":9200".
 # alloy_storage_path (string):  Set storage.path
 #               Default is "/var/alloy".
 # alloy_args (string):          Set extra arguments to pass to alloy
@@ -31,13 +31,13 @@ load_rc_config $name
 : ${alloy_user:="nobody"}
 : ${alloy_group:="nobody"}
 : ${alloy_args:="run /usr/local/etc/alloy.flow"}
-: ${alloy_storage_path:="/var/agent --server.http.listen-addr=::"}
-: ${alloy_listen_address:="--server.http.listen-addr=:9200"}
+: ${alloy_storage_path:="/var/agent"}
+: ${alloy_listen_address:=":9200"}
 
 pidfile=/var/run/alloy.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/alloy"
-command_args="-S -r -T ${name} -p ${pidfile} /usr/bin/env ${procname} \
+command_args="-S -r -T ${name} -P ${pidfile} /usr/bin/env ${procname} \
     ${alloy_args} --storage.path=${alloy_storage_path} --server.http.listen-addr=${alloy_listen_address}"
 
 start_precmd=alloy_startprecmd
