@@ -30,15 +30,16 @@ load_rc_config $name
 : ${alloy_enable:="NO"}
 : ${alloy_user:="nobody"}
 : ${alloy_group:="nobody"}
-: ${alloy_args:="run /usr/local/etc/alloy.flow"}
+: ${alloy_args:=""}
 : ${alloy_storage_path:="/var/agent"}
 : ${alloy_listen_address:=":9200"}
 
 pidfile=/var/run/alloy.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/alloy"
-command_args="-S -r -T ${name} -P ${pidfile} /usr/bin/env ${procname} \
-    ${alloy_args} --storage.path=${alloy_storage_path} --server.http.listen-addr=${alloy_listen_address}"
+run="run /usr/local/etc/alloy.flow"
+command_args="-S -R 3 -T ${name} -P ${pidfile} /usr/bin/env ${procname} ${run} \
+    --storage.path=${alloy_storage_path} --server.http.listen-addr=${alloy_listen_address} ${alloy_args}"
 
 start_precmd=alloy_startprecmd
 
