@@ -31,7 +31,7 @@ load_rc_config $name
 : ${alloy_user:="nobody"}
 : ${alloy_group:="nobody"}
 : ${alloy_args:=""}
-: ${alloy_storage_path:="/var/agent"}
+: ${alloy_storage_path:="/var/alloy"}
 : ${alloy_listen_address:=":9200"}
 
 pidfile=/var/run/alloy.pid
