@@ -25,8 +25,8 @@ GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${P
 USE_RC_SUBR=	alloy
 
  # Copy the go.mod so we can get all the dist files during fetch.
-_USES_fetch+= 600:go-pre-fetch
-go-pre-fetch:
+_USES_fetch+= 600:go-syntax-fetch
+go-syntax-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME}/syntax dependency";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
 		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
