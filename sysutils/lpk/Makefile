@@ -13,7 +13,7 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go:modules
+USES=		go:1.22,modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	zachfi
