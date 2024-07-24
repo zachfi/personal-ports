@@ -1,5 +1,5 @@
 PORTNAME=	alloy
-PORTVERSION=	1.0.0
+PORTVERSION=	1.2.1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -22,6 +22,7 @@ GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${PORTVERSION}'
+GO_MOD_DIST=	github
 
  # Copy the go.mod so we can get all the dist files during fetch.
 _USES_fetch+= 600:go-syntax-fetch
