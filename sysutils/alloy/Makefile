@@ -1,11 +1,11 @@
 PORTNAME=	alloy
 PORTVERSION=	1.0.0
-PORTREVISION=	8
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
-MAINTAINER=	contact@zach.fi
+MAINTAINER=	zach.leslie@grafana.com
 COMMENT=	OpenTelemetry Collector distribution with programmable pipelines
+WWW=		https://github.com/grafana/alloy
 
 LICENSE=	MIT
 
@@ -16,20 +16,19 @@ USE_GITHUB=	yes
 
 GH_ACCOUNT=	grafana
 GH_PROJECT=	alloy
+USE_RC_SUBR=	alloy
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=v${PORTVERSION}'
-
-USE_RC_SUBR=	alloy
 
  # Copy the go.mod so we can get all the dist files during fetch.
 _USES_fetch+= 600:go-syntax-fetch
 go-syntax-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME}/syntax dependency";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
-		tar -xzf grafana-alloy-v1.0.0_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
+		tar -xzf grafana-alloy-v${PORTVERSION}_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
 		cp ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
 
 # Copy over the syntax/ directory from the source extract to ensure the go mod
