@@ -42,7 +42,7 @@ _USES_fetch+= 600:go-datadog-fetch
 go-datadog-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME}/internal/etc/datadogreceiver dependency";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e internal/etc/datadogreceiver/go.mod ] || mkdir -p internal/etc/datadogreceiver/; \
-		tar -xzf grafana-alloy-v${PORTVERSION}_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver/go.mod; \
+		tar -xvzf grafana-alloy-v${PORTVERSION}_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver/go.mod; \
 		cp ${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver/go.mod internal/etc/datadogreceiver/go.mod)
 
 # Copy over the internal/etc/datadogreceiver/ directory from the source extract to ensure the go mod
@@ -50,8 +50,6 @@ go-datadog-fetch:
 _USES_extract+= 600:go-post-extract-datadogreceiver
 go-post-extract-datadogreceiver:
 	@cp -r ${WRKDIR}/${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver ${GO_WRKSRC}/internal/etc/datadogreceiver;
-
-# internal/etc/datadogreceiver/go.mod
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
