@@ -49,6 +49,7 @@ go-datadog-fetch:
 # replace for ./internal/etc/datadogreceiver is handled with the correct files on disk.
 _USES_extract+= 601:go-post-extract-datadogreceiver
 go-post-extract-datadogreceiver:
+	mkdir -p ${GO_WRKSRC}/internal/etc
 	cp -r ${WRKDIR}/${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver ${GO_WRKSRC}/internal/etc/datadogreceiver;
 
 do-install:
