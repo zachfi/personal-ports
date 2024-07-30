@@ -28,7 +28,7 @@ _USES_fetch+= 600:go-syntax-fetch
 go-syntax-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME}/syntax dependency";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || mkdir syntax/; \
-		tar -xzvf grafana-alloy-v${PORTVERSION}_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
+		tar -xzf grafana-alloy-v${PORTVERSION}_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
 		cp ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)
 
 # Copy over the syntax/ directory from the source extract to ensure the go mod
@@ -42,7 +42,7 @@ _USES_fetch+= 601:go-datadog-fetch
 go-datadog-fetch:
 	@${ECHO_MSG} "===> Fetching ${GO_MODNAME}/internal/etc/datadogreceiver dependency";
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e internal/etc/datadogreceiver/go.mod ] || mkdir -p internal/etc/datadogreceiver/; \
-		tar -xvzf grafana-alloy-v${PORTVERSION}_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver/go.mod; \
+		tar -xzf grafana-alloy-v${PORTVERSION}_GH0.tar.gz ${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver/go.mod; \
 		cp ${PORTNAME}-${PORTVERSION}/internal/etc/datadogreceiver/go.mod internal/etc/datadogreceiver/go.mod)
 
 # Copy over the internal/etc/datadogreceiver/ directory from the source extract to ensure the go mod
