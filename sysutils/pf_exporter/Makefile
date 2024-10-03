@@ -20,7 +20,7 @@ GH_ACCOUNT=	mischief
 GH_PROJECT=	pf_exporter
 
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-#GO_BUILDFLAGS=	-mod=vendor
+GO_BUILDFLAGS=	-mod=vendor
 
 PLIST_FILES=	bin/pf_exporter
 

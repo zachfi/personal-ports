@@ -4,3 +4,4 @@ sysutils/nodemanager/
 sysutils/grafana-promtail/
 sysutils/weigh/
 sysutils/lpk/
+sysutils/pf_exporter/
