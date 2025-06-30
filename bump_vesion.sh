@@ -32,7 +32,8 @@ popd
 sudo -i bash -c portshaker -v
 
 tree=personal
-jail=pkg14-0
+jail=pkg14-2
 list=/home/zach/Code/personal-ports/personal.list
 
-sudo poudriere bulk -f $list -p $tree -j $jail
+#sudo poudriere bulk -f $list -p $tree -j $jail
+sudo poudriere bulk -j $jail sysutils/nodemanager
