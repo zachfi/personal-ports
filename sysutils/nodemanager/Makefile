@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	nodemanager
-PORTVERSION=	0.4.1
+PORTVERSION=	0.4.3
 PORTREVISION=	0
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
@@ -13,7 +13,7 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go:1.23,modules
+USES=		go:1.24,modules
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	zachfi

@@ -1,5 +1,5 @@
 PORTNAME=	alloy
-DISTVERSION=	1.6.1
+DISTVERSION=	1.9.2
 DISTVERSIONPREFIX=v
 PORTREVISION=	3
 CATEGORIES=	sysutils
@@ -30,7 +30,8 @@ post-fetch:
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || (\
 		${MKDIR} syntax/; \
 		${TAR} -xzf ${DISTNAME}${EXTRACT_SUFX} ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
-		${CP} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod))
+		${CP} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)); \
+		make generate-ui
 
 post-extract:
 	${CP} -r ${WRKDIR}/${PORTNAME}-${PORTVERSION}/syntax ${GO_WRKSRC}/syntax;
