@@ -1,7 +1,7 @@
 PORTNAME=	alloy
-DISTVERSION=	1.9.2
+DISTVERSION=	1.10.2
 DISTVERSIONPREFIX=v
-PORTREVISION=	3
+PORTREVISION=	0
 CATEGORIES=	sysutils
 
 MAINTAINER=	zach.leslie@grafana.com
@@ -12,7 +12,7 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go:1.23,modules
+USES=		go:1.24,modules
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	grafana
@@ -30,12 +30,10 @@ post-fetch:
 	(cd ${DISTDIR}/${DIST_SUBDIR}; [ -e syntax/go.mod ] || (\
 		${MKDIR} syntax/; \
 		${TAR} -xzf ${DISTNAME}${EXTRACT_SUFX} ${PORTNAME}-${PORTVERSION}/syntax/go.mod; \
-		${CP} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod)); \
-		make generate-ui
+		${CP} ${PORTNAME}-${PORTVERSION}/syntax/go.mod syntax/go.mod))
 
 post-extract:
 	${CP} -r ${WRKDIR}/${PORTNAME}-${PORTVERSION}/syntax ${GO_WRKSRC}/syntax;
-	make generate-ui
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/alloy ${STAGEDIR}${PREFIX}/bin/alloy
