@@ -19,7 +19,7 @@ port=$1
 # fi
 
 tree=personal
-jail=pkg14-1
+jail=pkg14-3
 
 sudo -i bash -c portshaker -v
 sudo poudriere testport -i -p $tree -j $jail $port
