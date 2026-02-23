@@ -24,9 +24,7 @@ SUB_FILES=	pkg-install
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-# Main alloy binary is built from ./collector (single main package).
-# Use relative path so -mod=vendor treats it as main module, not an external import.
-GO_TARGET=	./collector
+# Binary is built by custom do-build from collector/ (separate Go module with own go.mod).
 GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=${GH_TAGNAME}'
 
 # Run before go-post-extract (800) so go mod tidy sees replace ./syntax and ./collector.
