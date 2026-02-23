@@ -33,16 +33,14 @@ post-fetch:
 		${TAR} -xzf ${DISTNAME}${EXTRACT_SUFX} ${PORTNAME}-${DISTVERSION}/syntax/go.mod; \
 		${CP} ${PORTNAME}-${DISTVERSION}/syntax/go.mod syntax/go.mod))
 
-post-extract:
-	# Go module zip lacks collector/ and extension/; copy from GitHub tarball.
-	${CP} -r ${WRKDIR}/${PORTNAME}-${DISTVERSION}/syntax ${GO_WRKSRC}
-	${CP} -r ${WRKDIR}/${PORTNAME}-${DISTVERSION}/collector ${GO_WRKSRC}
-	${CP} -r ${WRKDIR}/${PORTNAME}-${DISTVERSION}/extension ${GO_WRKSRC}
 
 do-install:
 	# GO_TARGET is ./collector; bsd.go.mk outputs bin/collector
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/collector ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
-	${INSTALL_DATA} ${WRKSRC}/example-config.alloy ${STAGEDIR}${PREFIX}/etc/alloy.flow.sample
+	${INSTALL_DATA} ${WRKDIR}/${PORTNAME}-${DISTVERSION}/example-config.alloy ${STAGEDIR}${PREFIX}/etc/alloy.flow.sample
 	${MKDIR} ${STAGEDIR}/var/${PORTNAME}
+
+# Build from tarball so ./collector is part of the main module (zip omits it).
+GO_WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
 
 .include <bsd.port.mk>
