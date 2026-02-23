@@ -2,7 +2,7 @@
 
 PORTNAME=	lpk
 PORTVERSION=	0.0.3
-PORTREVISION=	6
+PORTREVISION=	7
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -13,7 +13,7 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go:1.22,modules
+USES=		go:modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	zachfi
