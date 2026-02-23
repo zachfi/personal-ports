@@ -41,8 +41,20 @@ post-fetch:
 		${TAR} -xzf ${DISTNAME}${EXTRACT_SUFX} ${PORTNAME}-${DISTVERSION}/syntax/go.mod; \
 		${CP} ${PORTNAME}-${DISTVERSION}/syntax/go.mod syntax/go.mod))
 
+# Fetch phase: download collector submodule deps into same module cache (extract has no network in poudriere).
+_USES_fetch+=	900:alloy-fetch-collector-deps
+alloy-fetch-collector-deps:
+	@${ECHO_MSG} "===> Fetching collector submodule dependencies"; \
+	td=$$(mktemp -d -t alloy_collector_deps); \
+	trap "rm -rf $$td" 0; \
+	${TAR} -xzf ${DISTDIR}/${DIST_SUBDIR}/${DISTNAME}${EXTRACT_SUFX} -C $$td; \
+	(cd $$td/${PORTNAME}-${DISTVERSION}/collector && \
+		${SETENVI} ${WRK_ENV} GOPATH="${GO_GOPATH}" GO111MODULE=on GOFLAGS=-modcacherw GOSUMDB=sum.golang.org \
+		GOPROXY=${GO_GOPROXY} ${GO_CMD} mod download -x all); \
+	rm -rf $$td
 
-# Copy main module vendor into tarball after go-post-extract (800). Then vendor collector submodule (needs network) so build can use -mod=vendor.
+
+# Copy main module vendor into tarball after go-post-extract (800). Then vendor collector from cache (populated at fetch).
 _USES_extract+=	900:alloy-post-go-extract
 alloy-post-go-extract:
 	@if [ -d ${GO_WRKSRC}/vendor ]; then \
@@ -50,9 +62,9 @@ alloy-post-go-extract:
 	else \
 		${ECHO_MSG} "===> WARNING: ${GO_WRKSRC}/vendor missing (go mod vendor may have failed)"; \
 	fi
-	@${ECHO_MSG} "===> Vendoring collector submodule (requires network)"; \
+	@${ECHO_MSG} "===> Vendoring collector submodule"; \
 	(cd ${WRKDIR}/${PORTNAME}-${DISTVERSION}/collector && \
-		${SETENVI} ${WRK_ENV} ${MAKE_ENV} ${GO_ENV} GOPROXY=https://proxy.golang.org,direct \
+		${SETENVI} ${WRK_ENV} ${MAKE_ENV} ${GO_ENV} GOPROXY=${GO_MODCACHE} \
 		${GO_CMD} mod vendor -e)
 
 # Define before .include so bsd.port.mk and go.mk see !target(do-build/do-install) and do not add defaults.
