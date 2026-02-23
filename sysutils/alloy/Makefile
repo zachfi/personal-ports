@@ -44,17 +44,16 @@ post-fetch:
 		${CP} ${PORTNAME}-${DISTVERSION}/syntax/go.mod syntax/go.mod))
 
 
-# Build from tarball (has collector/); module zip omits it. Copy vendored deps if vendor exists.
-post-extract:
+# Copy vendor into tarball after go-post-extract (800) creates it; run at 900 so it's after Vendoring.
+_USES_extract+=	900:alloy-post-go-extract
+alloy-post-go-extract:
 	@if [ -d ${GO_WRKSRC}/vendor ]; then \
 		${CP} -r ${GO_WRKSRC}/vendor ${WRKDIR}/${PORTNAME}-${DISTVERSION}/; \
 	else \
 		${ECHO_MSG} "===> WARNING: ${GO_WRKSRC}/vendor missing (go mod vendor may have failed)"; \
 	fi
 
-.include <bsd.port.mk>
-
-# Custom build/install (tarball has collector/); defined after include when using go:no_targets.
+# Define before .include so bsd.port.mk and go.mk see !target(do-build/do-install) and do not add defaults.
 _GO_WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
 do-build:
 	(cd ${_GO_WRKSRC}; \
@@ -65,3 +64,5 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/collector ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 	${INSTALL_DATA} ${WRKDIR}/${PORTNAME}-${DISTVERSION}/example-config.alloy ${STAGEDIR}${PREFIX}/etc/alloy.flow.sample
 	${MKDIR} ${STAGEDIR}/var/${PORTNAME}
+
+.include <bsd.port.mk>
