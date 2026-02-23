@@ -10,7 +10,8 @@ WWW=		https://github.com/grafana/alloy
 
 LICENSE=	MIT
 
-USES=		go:modules
+# no_targets: we supply do-build/do-install (build from tarball); avoids duplicate target warnings.
+USES=		go:modules,no_targets
 
 # nodefault: go.mk sets WRKSRC for the module zip; avoid USE_GITHUB+WRKSRC sanity warning.
 USE_GITHUB=	yes,nodefault
@@ -43,13 +44,17 @@ post-fetch:
 		${CP} ${PORTNAME}-${DISTVERSION}/syntax/go.mod syntax/go.mod))
 
 
-# Build from tarball (has collector/); module zip omits it. Copy vendored deps into tarball.
+# Build from tarball (has collector/); module zip omits it. Copy vendored deps if vendor exists.
 post-extract:
-	${CP} -r ${GO_WRKSRC}/vendor ${WRKDIR}/${PORTNAME}-${DISTVERSION}/
+	@if [ -d ${GO_WRKSRC}/vendor ]; then \
+		${CP} -r ${GO_WRKSRC}/vendor ${WRKDIR}/${PORTNAME}-${DISTVERSION}/; \
+	else \
+		${ECHO_MSG} "===> WARNING: ${GO_WRKSRC}/vendor missing (go mod vendor may have failed)"; \
+	fi
 
 .include <bsd.port.mk>
 
-# Override build/install to use tarball (has collector/); must be after include to override go.mk.
+# Custom build/install (tarball has collector/); defined after include when using go:no_targets.
 _GO_WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
 do-build:
 	(cd ${_GO_WRKSRC}; \
