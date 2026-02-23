@@ -13,7 +13,9 @@ LICENSE=	MIT
 # no_targets: we supply do-build/do-install (build from tarball); avoids duplicate target warnings.
 USES=		go:modules,no_targets
 
-# nodefault: go.mk sets WRKSRC for the module zip; avoid USE_GITHUB+WRKSRC sanity warning.
+# nodefault required: go.mk sets WRKSRC to the Go module path (${GO_MODNAME}@version).
+# Without nodefault, bsd.port.mk warns "USE_GITHUB and WRKSRC is set"; we cannot remove
+# WRKSRC because go:modules requires it. GH_PROJECT is set correctly for the tarball.
 USE_GITHUB=	yes,nodefault
 GH_ACCOUNT=	grafana
 GH_PROJECT=	alloy
