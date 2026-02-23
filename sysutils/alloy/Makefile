@@ -22,7 +22,8 @@ SUB_FILES=	pkg-install
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 # Main alloy binary is built from ./collector (single main package).
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/collector
+# Use relative path so -mod=vendor treats it as main module, not an external import.
+GO_TARGET=	./collector
 GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=${GH_TAGNAME}'
 
 post-fetch:

@@ -1,7 +1,7 @@
 #sysutils/freebsd_exporter/
 sysutils/alloy/
 sysutils/nodemanager/
-sysutils/grafana-promtail/
+#sysutils/grafana-promtail/
 sysutils/weigh/
 sysutils/lpk/
-sysutils/pf_exporter/
+#sysutils/pf_exporter/
