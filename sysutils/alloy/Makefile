@@ -1,6 +1,7 @@
 PORTNAME=	alloy
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.10.2
+DISTVERSION=	1.13.1
+PORTREVISION=	0
 CATEGORIES=	sysutils
 
 MAINTAINER=	zach.leslie@grafana.com
@@ -15,6 +16,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	grafana
 
 USE_RC_SUBR=	${PORTNAME}
+
+SUB_FILES=	pkg-install
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
