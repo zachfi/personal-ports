@@ -44,7 +44,7 @@ post-fetch:
 		${CP} ${PORTNAME}-${DISTVERSION}/syntax/go.mod syntax/go.mod))
 
 
-# Copy vendor into tarball after go-post-extract (800) creates it; run at 900 so it's after Vendoring.
+# Copy main module vendor into tarball after go-post-extract (800). Collector submodule is built with -mod=mod.
 _USES_extract+=	900:alloy-post-go-extract
 alloy-post-go-extract:
 	@if [ -d ${GO_WRKSRC}/vendor ]; then \
@@ -55,10 +55,12 @@ alloy-post-go-extract:
 
 # Define before .include so bsd.port.mk and go.mk see !target(do-build/do-install) and do not add defaults.
 _GO_WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
+# Collector is a Go submodule (own go.mod with replace directives); use -mod=mod so Go uses cache/parent, not vendor.
 do-build:
-	(cd ${_GO_WRKSRC}; \
-		${SETENVI} ${WRK_ENV} ${MAKE_ENV} ${GO_ENV} GOMAXPROCS=${MAKE_JOBS_NUMBER} GOPROXY=off \
-		${GO_CMD} build ${GO_BUILDFLAGS} -o ${GO_WRKDIR_BIN}/collector ./collector)
+	(cd ${_GO_WRKSRC}/collector; \
+		${SETENVI} ${WRK_ENV} ${MAKE_ENV} ${GO_ENV} GOMAXPROCS=${MAKE_JOBS_NUMBER} \
+		GOPROXY=${GO_GOPROXY} \
+		${GO_CMD} build ${GO_BUILDFLAGS} -mod=mod -o ${GO_WRKDIR_BIN}/collector .)
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/collector ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
