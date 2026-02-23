@@ -42,7 +42,7 @@ post-fetch:
 		${CP} ${PORTNAME}-${DISTVERSION}/syntax/go.mod syntax/go.mod))
 
 
-# Copy main module vendor into tarball after go-post-extract (800). Collector submodule is built with -mod=mod.
+# Copy main module vendor into tarball after go-post-extract (800). Then vendor collector submodule (needs network) so build can use -mod=vendor.
 _USES_extract+=	900:alloy-post-go-extract
 alloy-post-go-extract:
 	@if [ -d ${GO_WRKSRC}/vendor ]; then \
@@ -50,15 +50,18 @@ alloy-post-go-extract:
 	else \
 		${ECHO_MSG} "===> WARNING: ${GO_WRKSRC}/vendor missing (go mod vendor may have failed)"; \
 	fi
+	@${ECHO_MSG} "===> Vendoring collector submodule (requires network)"; \
+	(cd ${WRKDIR}/${PORTNAME}-${DISTVERSION}/collector && \
+		${SETENVI} ${WRK_ENV} ${MAKE_ENV} ${GO_ENV} GOPROXY=https://proxy.golang.org,direct \
+		${GO_CMD} mod vendor -e)
 
 # Define before .include so bsd.port.mk and go.mk see !target(do-build/do-install) and do not add defaults.
 _GO_WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
-# Collector is a Go submodule (own go.mod with replace directives); use -mod=mod so Go uses cache/parent, not vendor.
+# Collector is a Go submodule; vendor is populated in 900 hook so build can run offline (-mod=vendor).
 do-build:
 	(cd ${_GO_WRKSRC}/collector; \
-		${SETENVI} ${WRK_ENV} ${MAKE_ENV} ${GO_ENV} GOMAXPROCS=${MAKE_JOBS_NUMBER} \
-		GOPROXY=${GO_GOPROXY} \
-		${GO_CMD} build ${GO_BUILDFLAGS} -mod=mod -o ${GO_WRKDIR_BIN}/collector .)
+		${SETENVI} ${WRK_ENV} ${MAKE_ENV} ${GO_ENV} GOMAXPROCS=${MAKE_JOBS_NUMBER} GOPROXY=off \
+		${GO_CMD} build ${GO_BUILDFLAGS} -mod=vendor -o ${GO_WRKDIR_BIN}/collector .)
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/collector ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
