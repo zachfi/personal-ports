@@ -34,7 +34,10 @@ post-fetch:
 		${CP} ${PORTNAME}-${DISTVERSION}/syntax/go.mod syntax/go.mod))
 
 post-extract:
+	# Go module zip lacks collector/ and extension/; copy from GitHub tarball.
 	${CP} -r ${WRKDIR}/${PORTNAME}-${DISTVERSION}/syntax ${GO_WRKSRC}
+	${CP} -r ${WRKDIR}/${PORTNAME}-${DISTVERSION}/collector ${GO_WRKSRC}
+	${CP} -r ${WRKDIR}/${PORTNAME}-${DISTVERSION}/extension ${GO_WRKSRC}
 
 do-install:
 	# GO_TARGET is ./collector; bsd.go.mk outputs bin/collector
