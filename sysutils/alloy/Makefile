@@ -21,7 +21,8 @@ SUB_FILES=	pkg-install
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
+# Main alloy binary is built from ./collector (single main package).
+GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/collector
 GO_BUILDFLAGS=	-ldflags='-X github.com/grafana/alloy/internal/build.Version=${GH_TAGNAME}'
 
 post-fetch:
@@ -35,7 +36,8 @@ post-extract:
 	${CP} -r ${WRKDIR}/${PORTNAME}-${DISTVERSION}/syntax ${GO_WRKSRC}
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	# GO_TARGET is ./collector; bsd.go.mk outputs bin/collector
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/collector ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 	${INSTALL_DATA} ${WRKSRC}/example-config.alloy ${STAGEDIR}${PREFIX}/etc/alloy.flow.sample
 	${MKDIR} ${STAGEDIR}/var/${PORTNAME}
 
