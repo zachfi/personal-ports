@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# PROVIDE: pf_exporter
+# REQUIRE: LOGIN pf
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# pf_exporter_enable (bool):          Set to NO by default.
+#               Set it to YES to enable pf_exporter.
+# pf_exporter_args (string):          Set extra arguments to pass to pf_exporter
+#               Default is "".
+# pf_exporter_listen_address (string):Set ip:port that pf_exporter will listen on
+#               Default is ":9107".
+
+. /etc/rc.subr
+
+name=pf_exporter
+rcvar=pf_exporter_enable
+
+load_rc_config $name
+
+: ${pf_exporter_enable:="NO"}
+: ${pf_exporter_args:=""}
+: ${pf_exporter_listen_address:=":9107"}
+
+pidfile=/var/run/pf_exporter.pid
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/pf_exporter"
+command_args="-S -T ${name} -f -p ${pidfile} ${procname} \
+    -web.listen-address ${pf_exporter_listen_address} \
+    ${pf_exporter_args}"
+
+start_precmd=pf_exporter_startprecmd
+
+pf_exporter_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install -o root -g wheel /dev/null ${pidfile};
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
