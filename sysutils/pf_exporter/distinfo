@@ -1,6 +1,6 @@
 TIMESTAMP = 1775770359
-SHA256 (mischief-pf_exporter-bf9815c_GH0.tar.gz) = 0aabc7635a73b808eb64da6428f0ec77cb4d7d706a946cdee5d02c35f4a5484a
-SIZE (mischief-pf_exporter-bf9815c_GH0.tar.gz) = 8393
+SHA256 (mischief-pf_exporter-0.0.0.20260403-bf9815c_GH0.tar.gz) = 0aabc7635a73b808eb64da6428f0ec77cb4d7d706a946cdee5d02c35f4a5484a
+SIZE (mischief-pf_exporter-0.0.0.20260403-bf9815c_GH0.tar.gz) = 8393
 SHA256 (beorn7-perks-v1.0.1_GH0.tar.gz) = 98db84bb0224a26094e6adba91b7ee7a1a7ace28cb648d818f8e779e6a19f825
 SIZE (beorn7-perks-v1.0.1_GH0.tar.gz) = 10867
 SHA256 (cespare-xxhash-v2.3.0_GH0.tar.gz) = 0e3dda07b03a5f3733506218860ecb2d50c0f01f16299b5d60902ef5158cbde5
@@ -23,3 +23,5 @@ SHA256 (prometheus-procfs-v0.15.1_GH0.tar.gz) = ba96bb6d45f1fcbff820c7d844e6acde
 SIZE (prometheus-procfs-v0.15.1_GH0.tar.gz) = 243687
 SHA256 (protocolbuffers-protobuf-go-v1.34.2_GH0.tar.gz) = a91d3129e38945b612b7a377364dae324ed3a489c3a805a412805a0cee76e7a2
 SIZE (protocolbuffers-protobuf-go-v1.34.2_GH0.tar.gz) = 1522818
+SHA256 (go/sysutils_pf_exporter/mischief-pf_exporter-0.0.0.20260403-bf9815c_GH0/0.0.0.20260403.mod) = 1242b5e7ca8205b65fd483142c0f9efe7f075b0d931d3b267cb31395a5472ace
+SIZE (go/sysutils_pf_exporter/mischief-pf_exporter-0.0.0.20260403-bf9815c_GH0/0.0.0.20260403.mod) = 645
