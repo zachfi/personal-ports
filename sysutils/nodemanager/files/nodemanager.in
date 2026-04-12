@@ -30,10 +30,11 @@ load_rc_config $name
 
 
 pidfile=/var/run/nodemanager.pid
+child_pidfile=/var/run/${name}.child.pid
 command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/nodemanager"
-command_args="-S -T ${name} -f -p ${pidfile} /usr/bin/env PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin ${procname} \
-    ${nodemanager_args}"
+procname="/usr/sbin/daemon"
+command_args="-S -T ${name} -f -P ${pidfile} -p ${child_pidfile} /usr/bin/env PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin \
+    %%PREFIX%%/bin/nodemanager ${nodemanager_args}"
 
 start_precmd=nodemanager_startprecmd
 
