@@ -2,7 +2,7 @@
 
 PORTNAME=	nodemanager
 PORTVERSION=	0.9.1
-PORTREVISION=	0
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -22,7 +22,7 @@ GH_PROJECT=	nodemanager
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_PKGNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
 #GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
-GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
+GO_BUILDFLAGS=	-ldflags='-X main.version=v${PORTVERSION} -X main.goos=freebsd -X main.goarch=${ARCH}' -mod=vendor
 
 PLIST_FILES=	bin/nodemanager
 
