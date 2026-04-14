@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	pf_exporter
-PORTVERSION=	0.0.0.20260403
+PORTVERSION=	0.2.0
 PORTREVISION=	0
 CATEGORIES=	sysutils
 
@@ -16,7 +16,7 @@ USE_RC_SUBR=	pf_exporter
 
 GH_ACCOUNT=	mischief
 GH_PROJECT=	pf_exporter
-GH_TAGNAME=	bf9815c
+GH_TAGNAME=	v0.2.0
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
@@ -26,7 +26,7 @@ GH_TUPLE=	beorn7:perks:v1.0.1:beorn7_perks/vendor/github.com/beorn7/perks \
 		cespare:xxhash:v2.3.0:cespare_xxhash/vendor/github.com/cespare/xxhash/v2 \
 		golang:sys:v0.22.0:golang_sys/vendor/golang.org/x/sys \
 		klauspost:compress:v1.17.9:klauspost_compress/vendor/github.com/klauspost/compress \
-		mischief:gopf:a4a11fe1b161:mischief_gopf/vendor/github.com/mischief/gopf \
+		mischief:gopf:be6edce3a4f6:mischief_gopf/vendor/github.com/mischief/gopf \
 		munnerz:goautoneg:a7dc8b61c822:munnerz_goautoneg/vendor/github.com/munnerz/goautoneg \
 		prometheus:client_golang:v1.20.4:prometheus_client_golang/vendor/github.com/prometheus/client_golang \
 		prometheus:client_model:v0.6.1:prometheus_client_model/vendor/github.com/prometheus/client_model \
