@@ -21,6 +21,7 @@ GH_TAGNAME=	v0.2.0
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_BUILDFLAGS=	-mod=vendor
+MAKE_ENV+=	GOPROXY=off
 
 GH_TUPLE=	beorn7:perks:v1.0.1:beorn7_perks/vendor/github.com/beorn7/perks \
 		cespare:xxhash:v2.3.0:cespare_xxhash/vendor/github.com/cespare/xxhash/v2 \
