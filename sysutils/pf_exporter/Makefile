@@ -18,10 +18,7 @@ GH_ACCOUNT=	mischief
 GH_PROJECT=	pf_exporter
 GH_TAGNAME=	v0.2.0
 
-GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-GO_BUILDFLAGS=	-mod=vendor
-MAKE_ENV+=	GO111MODULE=on GOPROXY=off
 
 GH_TUPLE=	beorn7:perks:v1.0.1:beorn7_perks/vendor/github.com/beorn7/perks \
 		cespare:xxhash:v2.3.0:cespare_xxhash/vendor/github.com/cespare/xxhash/v2 \
@@ -36,6 +33,10 @@ GH_TUPLE=	beorn7:perks:v1.0.1:beorn7_perks/vendor/github.com/beorn7/perks \
 		protocolbuffers:protobuf-go:v1.34.2:protobuf/vendor/google.golang.org/protobuf
 
 PLIST_FILES=	bin/pf_exporter
+
+post-extract:
+	${MKDIR} ${WRKDIR}/src/github.com/mischief
+	${LN} -sf ${WRKSRC} ${WRKDIR}/src/github.com/mischief/pf_exporter
 
 do-install:
 	${INSTALL_PROGRAM} -m 0500 ${WRKDIR}/bin/pf_exporter ${STAGEDIR}${PREFIX}/bin
