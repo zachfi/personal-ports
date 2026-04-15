@@ -14,7 +14,7 @@
 # nodemanager_group (string):         Set group that nodemanager will run under
 #               Default is "wheel".
 # nodemanager_args (string):          Set extra arguments to pass to nodemanager
-#               Default is "".
+#               Default is "-kubeconfig=/root/.kube/config".
 
 . /etc/rc.subr
 
@@ -26,14 +26,14 @@ load_rc_config $name
 : ${nodemanager_enable:="NO"}
 : ${nodemanager_user:="root"}
 : ${nodemanager_group:="wheel"}
-: ${nodemanager_args:=""}
+: ${nodemanager_args:="-kubeconfig=/root/.kube/config"}
 
 
 pidfile=/var/run/nodemanager.pid
 child_pidfile=/var/run/${name}.child.pid
 command="/usr/sbin/daemon"
 procname="/usr/sbin/daemon"
-command_args="-S -T ${name} -f -P ${pidfile} -p ${child_pidfile} /usr/bin/env PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin \
+command_args="-r -S -T ${name} -f -P ${pidfile} -p ${child_pidfile} /usr/bin/env PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin \
     %%PREFIX%%/bin/nodemanager ${nodemanager_args}"
 
 start_precmd=nodemanager_startprecmd
