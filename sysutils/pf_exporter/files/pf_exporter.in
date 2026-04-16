@@ -25,10 +25,37 @@ load_rc_config $name
 : ${pf_exporter_args:=""}
 : ${pf_exporter_listen_address:=":9107"}
 
-command="/usr/sbin/daemon"
-procname="%%PREFIX%%/bin/pf_exporter"
-command_args="-S -T ${name} -f -p /var/run/${name}.pid ${procname} \
-    -web.listen-address ${pf_exporter_listen_address} \
-    ${pf_exporter_args}"
+_pidfile=/var/run/${name}.pid
+_binary="%%PREFIX%%/bin/pf_exporter"
+
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+status_cmd="${name}_status"
+
+pf_exporter_start()
+{
+	/usr/sbin/daemon -S -T ${name} -f -p ${_pidfile} \
+	    ${_binary} -web.listen-address ${pf_exporter_listen_address} \
+	    ${pf_exporter_args}
+}
+
+pf_exporter_stop()
+{
+	if [ -f ${_pidfile} ]; then
+		kill $(cat ${_pidfile}) && rm -f ${_pidfile}
+	else
+		echo "${name} not running."
+	fi
+}
+
+pf_exporter_status()
+{
+	if [ -f ${_pidfile} ] && kill -0 $(cat ${_pidfile}) 2>/dev/null; then
+		echo "${name} is running as pid $(cat ${_pidfile})."
+	else
+		echo "${name} is not running."
+		return 1
+	fi
+}
 
 run_rc_command "$1"
