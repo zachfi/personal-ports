@@ -25,21 +25,10 @@ load_rc_config $name
 : ${pf_exporter_args:=""}
 : ${pf_exporter_listen_address:=":9107"}
 
-pidfile=/var/run/pf_exporter.pid
 command="/usr/sbin/daemon"
 procname="%%PREFIX%%/bin/pf_exporter"
-command_args="-S -T ${name} -f -p ${pidfile} ${procname} \
+command_args="-S -T ${name} -f -p /var/run/${name}.pid ${procname} \
     -web.listen-address ${pf_exporter_listen_address} \
     ${pf_exporter_args}"
 
-start_precmd=pf_exporter_startprecmd
-
-pf_exporter_startprecmd()
-{
-    if [ ! -e ${pidfile} ]; then
-        install -o root -g wheel /dev/null ${pidfile};
-    fi
-}
-
-load_rc_config $name
 run_rc_command "$1"

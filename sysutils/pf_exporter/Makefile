@@ -2,7 +2,7 @@
 
 PORTNAME=	pf_exporter
 PORTVERSION=	0.2.1
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	code@zach.fi
