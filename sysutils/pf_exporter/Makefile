@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	pf_exporter
-PORTVERSION=	0.2.0
+PORTVERSION=	0.2.1
 PORTREVISION=	0
 CATEGORIES=	sysutils
 
