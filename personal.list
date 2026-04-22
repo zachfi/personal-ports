@@ -5,3 +5,4 @@ sysutils/nodemanager/
 sysutils/weigh/
 sysutils/lpk/
 sysutils/pf_exporter/
+net/dhcpcd/

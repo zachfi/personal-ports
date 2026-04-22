@@ -1,0 +1,32 @@
+PORTNAME=	dhcpcd
+DISTVERSION=	10.3.1
+CATEGORIES=	net
+MASTER_SITES=	https://github.com/NetworkConfiguration/${PORTNAME}/releases/download/v${DISTVERSION}/
+
+MAINTAINER=	xaque208@gmail.com
+COMMENT=	DHCP/IPv4LL/IPv6RS/DHCPv6 client
+WWW=		https://roy.marples.name/projects/dhcpcd
+
+LICENSE=	BSD2CLAUSE
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+USES=		compiler:c11 cpe tar:xz
+CPE_VENDOR=	dhcpcd_project
+USE_RC_SUBR=	dhcpcd
+
+OPTIONS_DEFINE=		PRIVSEP
+OPTIONS_DEFAULT=	PRIVSEP
+PRIVSEP_DESC=		Enable privilege separation (requires _dhcp user)
+
+HAS_CONFIGURE=	yes
+CONFIGURE_ARGS=	--datadir=${PREFIX}/share/examples \
+		--prefix=${PREFIX} \
+		--without-udev
+PRIVSEP_CONFIGURE_ENABLE=	privsep
+PRIVSEP_CONFIGURE_ARGS=		--privsepuser="_dhcp"
+
+post-install:
+	${MV} ${STAGEDIR}${PREFIX}/etc/dhcpcd.conf ${STAGEDIR}${PREFIX}/etc/dhcpcd.conf.sample
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/dhcpcd
+
+.include <bsd.port.mk>
