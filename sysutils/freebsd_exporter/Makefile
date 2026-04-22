@@ -8,6 +8,7 @@ CATEGORIES=	sysutils
 
 MAINTAINER=	contact@zach.fi
 COMMENT=	Prometheus Exporter for FreeBSD
+WWW=		https://github.com/zachfi/freebsd_exporter
 
 LICENSE=	MIT
 
@@ -17,9 +18,9 @@ USES=		go:modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	zachfi
+GH_PROJECT=	freebsd_exporter
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
+GO_MODULE=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/freebsd_exporter

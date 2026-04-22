@@ -7,6 +7,7 @@ CATEGORIES=	sysutils
 
 MAINTAINER=	code@zach.fi
 COMMENT=	Export Prometheus metrics from PF
+WWW=		https://github.com/mischief/pf_exporter
 
 LICENSE=	APACHE20
 
@@ -18,6 +19,7 @@ GH_ACCOUNT=	mischief
 GH_PROJECT=	pf_exporter
 GH_TAGNAME=	v0.2.1
 
+GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 
 GH_TUPLE=	beorn7:perks:v1.0.1:beorn7_perks/vendor/github.com/beorn7/perks \

@@ -8,18 +8,19 @@ CATEGORIES=	sysutils
 
 MAINTAINER=	contact@zach.fi
 COMMENT=	Prometheus Exporter for OpenLDAP
+WWW=		https://github.com/zachfi/openldap_exporter
 
 LICENSE=	MIT
 
 BUILD_DEPENDS=	git:devel/git
 
-USES=		go
+USES=		go:modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	zachfi
+GH_PROJECT=	openldap_exporter
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
+GO_MODULE=	github.com/${GH_ACCOUNT}/${PORTNAME}
 
 PLIST_FILES=	bin/openldap_exporter
 

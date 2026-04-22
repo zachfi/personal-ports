@@ -8,6 +8,7 @@ CATEGORIES=	sysutils
 
 MAINTAINER=	contact@zach.fi
 COMMENT=	A Kubernetes Controller on FreeBSD
+WWW=		https://github.com/zachfi/freebsd_controller
 
 LICENSE=	MIT
 
@@ -17,9 +18,9 @@ USES=		go:modules
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	zachfi
+GH_PROJECT=	freebsd_controller
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}
+GO_MODULE=	github.com/${GH_ACCOUNT}/${PORTNAME}
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/freebsd_controller

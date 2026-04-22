@@ -8,6 +8,7 @@ CATEGORIES=	sysutils
 
 MAINTAINER=	code@zleslie.info
 COMMENT=	Read SSH keys from LDAP
+WWW=		https://github.com/zachfi/lpk
 
 LICENSE=	MIT
 
@@ -19,6 +20,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	zachfi
 GH_PROJECT=	lpk
 
+GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/lpk
 GO_BUILDFLAGS=	-mod=vendor
 
