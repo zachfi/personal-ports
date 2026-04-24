@@ -1,3 +1,7 @@
-TIMESTAMP = 1777003503
-SHA256 (zachfi-lpk-v0.0.5_GH0.tar.gz) = 03dd39352686cffd648b9c9d0cd6839984938e294db1120cbe9dd422c9126647
-SIZE (zachfi-lpk-v0.0.5_GH0.tar.gz) = 3917564
+TIMESTAMP = 1777006919
+SHA256 (go/sysutils_lpk/zachfi-lpk-v0.0.5_GH0/v0.0.5.mod) = b231fffc234cbd94ef4231f2426920fbf89fd930b1a9ad0252df4de65e290831
+SIZE (go/sysutils_lpk/zachfi-lpk-v0.0.5_GH0/v0.0.5.mod) = 2113
+SHA256 (go/sysutils_lpk/zachfi-lpk-v0.0.5_GH0/v0.0.5.zip) = 1f4578d94addfd826691605318d2a0fa434b9687d61941312492dfa2326775dd
+SIZE (go/sysutils_lpk/zachfi-lpk-v0.0.5_GH0/v0.0.5.zip) = 18230
+SHA256 (go/sysutils_lpk/zachfi-lpk-v0.0.5_GH0/zachfi-lpk-v0.0.5_GH0.tar.gz) = 03dd39352686cffd648b9c9d0cd6839984938e294db1120cbe9dd422c9126647
+SIZE (go/sysutils_lpk/zachfi-lpk-v0.0.5_GH0/zachfi-lpk-v0.0.5_GH0.tar.gz) = 3917564
