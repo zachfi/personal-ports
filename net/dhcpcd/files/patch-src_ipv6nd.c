@@ -1,5 +1,5 @@
---- a/src/ipv6nd.c
-+++ b/src/ipv6nd.c
+--- src/ipv6nd.c.orig
++++ src/ipv6nd.c
 @@ -367,17 +367,25 @@
  	};
  	struct cmsghdr *cm;
