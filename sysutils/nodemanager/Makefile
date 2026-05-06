@@ -18,15 +18,32 @@ GH_ACCOUNT=	zachfi
 GH_PROJECT=	nodemanager
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
-GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
-GO_ENV+=	GO111MODULE=on
-GO_BUILDFLAGS=	-mod=vendor -ldflags='-X main.version=v${PORTVERSION} -X main.goos=freebsd -X main.goarch=${ARCH}'
 
 PLIST_FILES=	bin/nodemanager
 
 USE_RC_SUBR=	nodemanager
 
+do-build:
+	cd ${WRKSRC} && ${SETENV} \
+		HOME=${WRKDIR} \
+		PATH=${WRKDIR}/.bin:${PATH} \
+		GO111MODULE=on \
+		GOPATH=${WRKDIR} \
+		GOPROXY=off \
+		CGO_ENABLED=1 \
+		CGO_CFLAGS="-I${LOCALBASE}/include" \
+		CGO_LDFLAGS="-L${LOCALBASE}/lib" \
+		GOTMPDIR=${WRKDIR} \
+		${GO_CMD} build \
+		-mod=vendor \
+		-buildmode=exe \
+		-trimpath \
+		-buildvcs=false \
+		-ldflags='-X main.version=v${PORTVERSION} -X main.goos=freebsd -X main.goarch=${ARCH}' \
+		-o ${WRKDIR}/bin/nodemanager \
+		${GO_MODULE}/cmd
+
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/cmd ${STAGEDIR}${PREFIX}/bin/nodemanager
+	${INSTALL_PROGRAM} ${WRKDIR}/bin/nodemanager ${STAGEDIR}${PREFIX}/bin/nodemanager
 
 .include <bsd.port.mk>
