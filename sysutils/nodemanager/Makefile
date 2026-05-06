@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	nodemanager
-PORTVERSION=	0.13.1
+PORTVERSION=	0.13.2
 PORTREVISION=	0
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
@@ -11,9 +11,7 @@ COMMENT=	A Kubernetes controller for node management
 
 LICENSE=	MIT
 
-BUILD_DEPENDS=	git:devel/git
-
-USES=		go:1.26,modules
+USES=		go:1.26
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	zachfi
@@ -21,7 +19,7 @@ GH_PROJECT=	nodemanager
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
-GO_BUILDFLAGS=	-ldflags='-X main.version=v${PORTVERSION} -X main.goos=freebsd -X main.goarch=${ARCH}' -mod=vendor
+GO_BUILDFLAGS=	-ldflags='-X main.version=v${PORTVERSION} -X main.goos=freebsd -X main.goarch=${ARCH}'
 
 PLIST_FILES=	bin/nodemanager
 
