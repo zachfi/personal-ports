@@ -24,7 +24,7 @@ GO_TARGET=	github.com/${GH_ACCOUNT}/${PORTNAME}/cmd/weigh
 
 PLIST_FILES=	bin/weigh
 
-USE_RC_SUBR=	weigh
+USE_RC_SUBR=	weigh_exporter
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/weigh ${STAGEDIR}${PREFIX}/bin
