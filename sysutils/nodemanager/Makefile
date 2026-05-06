@@ -19,7 +19,8 @@ GH_PROJECT=	nodemanager
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${GH_PROJECT}
 GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd
-GO_BUILDFLAGS=	-ldflags='-X main.version=v${PORTVERSION} -X main.goos=freebsd -X main.goarch=${ARCH}'
+GO_ENV+=	GO111MODULE=on
+GO_BUILDFLAGS=	-mod=vendor -ldflags='-X main.version=v${PORTVERSION} -X main.goos=freebsd -X main.goarch=${ARCH}'
 
 PLIST_FILES=	bin/nodemanager
 
