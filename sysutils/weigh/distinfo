@@ -1,3 +1,7 @@
-TIMESTAMP = 1778036870
-SHA256 (zachfi-weigh-v1.2.2_GH0.tar.gz) = a1d53bfa6e9a2f45f0b2d658950f4c20857566886a0455e1aa5fc6cbcf764337
-SIZE (zachfi-weigh-v1.2.2_GH0.tar.gz) = 4277431
+TIMESTAMP = 1778037806
+SHA256 (go/sysutils_weigh/zachfi-weigh-v1.2.2_GH0/v1.2.2.mod) = 529984b849ccb43a93cf57ffd66e44065243a09017f3fd9cb58c88adb7dbc1e5
+SIZE (go/sysutils_weigh/zachfi-weigh-v1.2.2_GH0/v1.2.2.mod) = 3068
+SHA256 (go/sysutils_weigh/zachfi-weigh-v1.2.2_GH0/v1.2.2.zip) = 066e7e7370e1715f21546a3dceac89dffecce14f70ed57c9027595fc913cc907
+SIZE (go/sysutils_weigh/zachfi-weigh-v1.2.2_GH0/v1.2.2.zip) = 56003
+SHA256 (go/sysutils_weigh/zachfi-weigh-v1.2.2_GH0/zachfi-weigh-v1.2.2_GH0.tar.gz) = a1d53bfa6e9a2f45f0b2d658950f4c20857566886a0455e1aa5fc6cbcf764337
+SIZE (go/sysutils_weigh/zachfi-weigh-v1.2.2_GH0/zachfi-weigh-v1.2.2_GH0.tar.gz) = 4277431
