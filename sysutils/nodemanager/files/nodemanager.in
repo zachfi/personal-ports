@@ -34,6 +34,7 @@ child_pidfile=/var/run/${name}.child.pid
 command="/usr/sbin/daemon"
 procname="/usr/sbin/daemon"
 command_args="-r -S -T ${name} -f -P ${pidfile} -p ${child_pidfile} /usr/bin/env PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin \
+    HTTP2_READ_IDLE_TIMEOUT_SECONDS=30 HTTP2_PING_TIMEOUT_SECONDS=15 \
     %%PREFIX%%/bin/nodemanager ${nodemanager_args}"
 
 start_precmd=nodemanager_startprecmd
