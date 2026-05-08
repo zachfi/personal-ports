@@ -1,7 +1,3 @@
-TIMESTAMP = 1778265376
-SHA256 (go/sysutils_nodemanager/zachfi-nodemanager-v0.15.1_GH0/v0.15.1.mod) = 4abdd42cc6217d3a0fecab12755b5d27a8dd3a270dc24f33598d62767942e01c
-SIZE (go/sysutils_nodemanager/zachfi-nodemanager-v0.15.1_GH0/v0.15.1.mod) = 4384
-SHA256 (go/sysutils_nodemanager/zachfi-nodemanager-v0.15.1_GH0/v0.15.1.zip) = cfb2eff37e9f2ff7f72395bd18eaab03e00de1077048fe039707a5c55b91c439
-SIZE (go/sysutils_nodemanager/zachfi-nodemanager-v0.15.1_GH0/v0.15.1.zip) = 388909
-SHA256 (go/sysutils_nodemanager/zachfi-nodemanager-v0.15.1_GH0/zachfi-nodemanager-v0.15.1_GH0.tar.gz) = 47e01a2cc2c0bb6a714a6941ff589b083e3deba4259a3d463c62392af3ba105d
-SIZE (go/sysutils_nodemanager/zachfi-nodemanager-v0.15.1_GH0/zachfi-nodemanager-v0.15.1_GH0.tar.gz) = 10656038
+TIMESTAMP = 1778265537
+SHA256 (zachfi-nodemanager-v0.15.1_GH0.tar.gz) = 47e01a2cc2c0bb6a714a6941ff589b083e3deba4259a3d463c62392af3ba105d
+SIZE (zachfi-nodemanager-v0.15.1_GH0.tar.gz) = 10656038
