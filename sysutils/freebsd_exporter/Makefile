@@ -1,8 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	freebsd_exporter
-PORTVERSION=	0.3.3
-PORTREVISION=	3
+PORTVERSION=	0.4.0
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -21,6 +20,8 @@ GH_ACCOUNT=	zachfi
 GH_PROJECT=	freebsd_exporter
 
 GO_MODULE=	github.com/${GH_ACCOUNT}/${PORTNAME}
+# v0.4.0 moved main into cmd/${PORTNAME}/, so override the default target.
+GO_TARGET=	${GO_MODULE}/cmd/${PORTNAME}
 GO_BUILDFLAGS=	-ldflags='-X main.Version=v${PORTVERSION}' -mod=vendor
 
 PLIST_FILES=	bin/freebsd_exporter
