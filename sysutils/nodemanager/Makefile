@@ -1,7 +1,7 @@
 # Created by: Zach Leslie <ports@zleslie.info>
 
 PORTNAME=	nodemanager
-PORTVERSION=	0.17.0
+PORTVERSION=	0.18.1
 PORTREVISION=	0
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
@@ -9,7 +9,7 @@ CATEGORIES=	sysutils
 # Upstream git commit for v${PORTVERSION}; update alongside PORTVERSION so
 # `nodemanager version` reports the real SHA instead of the unexpanded
 # $$Format:%H$$ placeholder baked into the release tarball.
-GIT_COMMIT=	a598a55c082685c8ca39627e09f4ddf5bcafe0ff
+GIT_COMMIT=	7570664447f3d7c2531e157edbd1104a8455a694
 BUILD_DATE!=	date -u +%Y-%m-%dT%H:%M:%SZ
 
 MAINTAINER=	contact@zach.fi
